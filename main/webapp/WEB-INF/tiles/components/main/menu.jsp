@@ -8,5 +8,4 @@
 </table>
 
 </div>
-<br>
 <hr>
