@@ -78,7 +78,7 @@ public class Member implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -111,7 +111,4 @@ public class Member implements Serializable {
 		this.authList = authList;
 	}
 
-	
-	
-	
 }

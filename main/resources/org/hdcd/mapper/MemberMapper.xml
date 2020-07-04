@@ -5,46 +5,46 @@
 <mapper namespace="org.hdcd.mapper.MemberMapper">
 
 	<resultMap type="org.hdcd.domain.Member" id="memberMap">
-		<id property="userId" column="user_id" />
-		<result property="userId" column="user_id" />
-		<result property="userPw" column="user_pw" />
-		<result property="userName" column="user_name" />
+		<id property="userId" column="userId" />
+		<result property="userId" column="userId" />
+		<result property="userPw" column="userPw" />
+		<result property="userName" column="userName" />
 		<result property="coin" column="coin" />
 		<result property="email" column="email" />
 		<result property="phone" column="phone" />
 		<result property="enabled" column="enabled" />
-		<result property="regDate" column="reg_date" />
-		<result property="updDate" column="upd_date" />
+		<result property="regDate" column="regDate" />
+		<result property="updDate" column="updDate" />
 		<collection property="authList" resultMap="authMap"></collection>		
 	</resultMap>
 	
 	<resultMap type="org.hdcd.domain.MemberAuth" id="authMap">
-		<result property="userId" column="user_id" />
+		<result property="userId" column="userId" />
 		<result property="auth" column="auth" />
 	</resultMap>
 	
 	<select id="readByUserId" resultMap="memberMap">
-		SELECT mem.user_id,
-			user_pw,
-			user_name,
+		SELECT mem.userId,
+			userPw,
+			userName,
 			coin,
 			email,
 			phone,
 			enabled,
-			reg_date,
-			upd_date,
+			regDate,
+			updDate,
 			auth
 		  FROM member mem LEFT OUTER JOIN member_auth auth 
-		  ON mem.user_id = auth.user_id
-		 WHERE mem.user_id = #{userId}
+		  ON mem.userId = auth.userId
+		 WHERE mem.userId = #{userId}
 	</select>
 	
 	<insert id="create" useGeneratedKeys="true" keyProperty="userId">
 		INSERT INTO member
 			(
-			user_id,
-			user_pw,
-			user_name,
+			userId,
+			userPw,
+			userName,
 			email,
 			phone
 			)
@@ -59,50 +59,50 @@
 	</insert>
 
 	<select id="read" resultMap="memberMap">
-		SELECT mem.user_id,
-			user_pw,
-			user_name,
+		SELECT mem.userId,
+			userPw,
+			userName,
 			coin,
 			email,
 			phone,
 			enabled,
-			reg_date,
-			upd_date,
+			regDate,
+			updDate,
 			auth
 		  FROM member mem LEFT OUTER JOIN member_auth auth 
-		  ON mem.user_id = auth.user_id
-		 WHERE mem.user_id = #{userId}
+		  ON mem.userId = auth.userId
+		 WHERE mem.userId = #{userId}
 	</select>
 	
 	<update id="update">
 		UPDATE member
-		   SET user_name = #{userName},
+		   SET userName = #{userName},
 		       email = #{email},
 		       phone = #{phone}
-		 WHERE user_id = #{userId}
+		 WHERE userId = #{userId}
 	</update>
 	
 	<delete id="delete">
 		DELETE FROM member
-		WHERE user_id = #{userId}
+		WHERE userId = #{userId}
 	</delete>
 	
 	<select id="list" resultType="org.hdcd.domain.Member">
-		SELECT user_id,
-			user_pw,
-			user_name,
+		SELECT userId,
+			userPw,
+			userName,
 			coin,
 			email,
 			phone,
-			reg_date
+			regDate
 		  FROM member
-		ORDER BY reg_date DESC
+		ORDER BY regDate DESC
 	</select>
 	
 	<insert id="createAuth">
 		INSERT INTO member_auth
 			(
-			user_id,
+			userId,
 			auth
 			)
 		VALUES
@@ -114,7 +114,7 @@
 	
 	<delete id="deleteAuth">
 		DELETE FROM member_auth
-		WHERE user_id = #{userId}
+		WHERE userId = #{userId}
 	</delete>
 	
 </mapper>
