@@ -18,4 +18,8 @@ public interface MemberService {
 	
 	public int getCoin(String userId) throws Exception;
 	
+	public int countAll() throws Exception;
+	
+	public void setupAdmin(Member member) throws Exception;
+	
 }

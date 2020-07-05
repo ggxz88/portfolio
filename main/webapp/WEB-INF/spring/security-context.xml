@@ -7,11 +7,33 @@
 	   http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans.xsd">
 	   
+	<!-- 스프링 빈 정의 -->   
+	<bean id="customAccessDenied" class="org.hdcd.common.security.CustomAccessDeniedHandler" />	     
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<bean id="customUserDetailsService" class="org.hdcd.common.security.CustomUserDetailsService" />
+	<bean id="customLoginSuccess" class="org.hdcd.common.security.CustomLoginSuccessHandler"></bean>
 	
 	<security:http>
-		<security:form-login />
+		<!-- CustomLoginSuccessHandler를 로그인 성공 처리자로 지정 -->
+		<security:form-login login-page="/auth/login" authentication-success-handler-ref="customLoginSuccess" />
+		
+		<!-- CustomAccessDeniedHandler를 접근 거부 처리자로 지정 -->
+		<security:access-denied-handler ref="customAccessDenied"/>
+		
+		<!-- 데이터 소스를 지정하고 테이블을 이용해서 기존 로그인 정보를 기록 -->
+		<!-- 쿠키의 유효시간을 지정 -->
+		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
+		
+		<!-- 로그아웃을 하면 자동 로그인에 사용하는 쿠키도 삭제 -->
+		<security:logout logout-url="/auth/logout" invalidate-session="true" delete-cookies="remember-me,JESSION_ID" />
+		
 	</security:http>	   
 	
-	<security:authentication-manager></security:authentication-manager>   
+	<security:authentication-manager>
+		<!-- CustomUserDetailsService 빈을 인증 제공자에 지정한다. -->
+		<security:authentication-provider user-service-ref="customUserDetailsService">
+			<security:password-encoder ref="bcryptPasswordEncoder" />
+		</security:authentication-provider>
+	
+	</security:authentication-manager>   
 </beans>	

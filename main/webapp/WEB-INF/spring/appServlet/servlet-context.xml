@@ -27,6 +27,9 @@
 	
 	<context:component-scan base-package="org.hdcd.controller" />
 	
+	<!-- org.hdcd.conmmon.security 패키지를 컴포넌트 스캔 대상으로 한다. -->
+	<context:component-scan base-package="org.hdcd.common.security" />
+	
 	<!-- Tiles 뷰 리졸버 -->
 	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />

@@ -1,7 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
+
 <hr>
-<div align="center">
-	<p>ⓒ 2020 ALL RIGHT RESERVED</p>
+<div class="Footer" align="center">
+	<p>© 2020 ALL RIGHT RESERVED</p>
 </div>
 <hr>

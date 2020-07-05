@@ -117,4 +117,9 @@
 		WHERE userId = #{userId}
 	</delete>
 	
+	<select id="countAll" resultType="int">
+		SELECT COUNT(*) 
+		  FROM member
+	</select>
+	
 </mapper>
