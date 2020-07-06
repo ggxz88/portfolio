@@ -13,9 +13,9 @@
 		<th align="center" width="300"><spring:message code="user.userPw" /></th>
 		<th align="center" width="100"><spring:message code="user.userName" /></th>
 		<th align="center" width="100"><spring:message code="user.coin" /></th>
-		<th align="center" width="100"><spring:message code="user.Email" /></th>
-		<th align="center" width="100"><spring:message code="user.Phone" /></th>
-		<th align="center" width="180"><spring:message code="user.regDate" /></th>
+		<th align="center" width="100"><spring:message code="user.email" /></th>
+		<th align="center" width="100"><spring:message code="user.phone" /></th>
+		<th align="center" width="180"><spring:message code="user.regdate" /></th>
 	</tr>
 	<c:choose>
 		<c:when test="${empty list}">

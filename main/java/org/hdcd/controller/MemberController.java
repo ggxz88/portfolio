@@ -3,6 +3,7 @@ package org.hdcd.controller;
 import org.hdcd.domain.Member;
 import org.hdcd.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,6 +54,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void list(Model model) throws Exception {
 		model.addAttribute("list", service.list());
 	}
@@ -77,6 +79,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "remove", method = RequestMethod.POST)
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String remove(String userId, RedirectAttributes rttr) throws Exception {
 		service.remove(userId);
 		
@@ -100,7 +103,7 @@ public class MemberController {
 			String inputPassword = member.getUserPw();
 			member.setUserPw(passwordEncoder.encode(inputPassword));
 			
-			service.register(member);
+			service.setupAdmin(member);
 			
 			rttr.addFlashAttribute("userName", member.getUserName());
 			

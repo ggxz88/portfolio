@@ -15,6 +15,14 @@
 		<put-attribute name="title" value="User" />
 		<put-attribute name="content" value="/WEB-INF/views/user/{1}.jsp" />
 	</definition>
+	<definition name="mypage/*" extends="main-template">
+		<put-attribute name="title" value="Mypage" />
+		<put-attribute name="content" value="/WEB-INF/views/mypage/{1}.jsp" />
+	</definition>
+	<definition name="board/*" extends="main-template">
+		<put-attribute name="title" value="Board" />
+		<put-attribute name="content" value="/WEB-INF/views/board/{1}.jsp" />
+	</definition>
 	
 	<definition name="common-template" template="/WEB-INF/tiles/layouts/common_template.jsp">
 		<put-attribute name="title" value="Common" />

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.hdcd.mapper.BoardMapper">
+
+	<insert id="create">
+		INSERT INTO board
+			(
+			title,
+			content,
+			writer
+			)
+		VALUES
+			(
+			#{title},
+			#{content},
+			#{writer}
+			)
+	</insert>
+	
+	<select id="read" resultType="org.hdcd.domain.Board">
+		SELECT boardNo,
+			title,
+			content,
+			writer,
+			regDate
+		  FROM board
+		 WHERE boardNo = #{boardNo}
+	</select>
+
+	<update id="update">
+		UPDATE board 
+		   SET title = #{title},
+		   	content = #{content}
+		 WHERE boardNo = #{boardNo}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM board
+		 WHERE boardNo = #{boardNo}
+	</delete>
+	
+	<select id="list" resultType="org.hdcd.domain.Board">
+		<![CDATA[
+			SELECT boardNo,
+				title,
+				content,
+				writer,
+				regDate
+			  FROM board
+			 WHERE boardNo > 0
+			 ORDER BY boardNo DESC,
+			 	regDate DESC
+		]]>
+	</select>
+	
+</mapper>

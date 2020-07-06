@@ -6,7 +6,24 @@
 
 <h2></h2>
 
-<form action="/user/register" method="post" >
+<script>
+	function checkPw() {
+		var pw1 = document.getElementById('userPw').value;
+		var pw2 = document.getElementById('userPwconfirm').value;
+		
+		if(pw1 == pw2) {
+			document.getElementById('check').innerHTML='비밀번호가 일치합니다.';
+			document.getElementById('check').style.color='blue';
+		}
+		else {
+			document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
+			document.getElementById('check').style.color='red';
+		}
+	}
+	
+</script>
+
+<form id="register" action="/user/register" method="post" >
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -17,7 +34,12 @@
 	
 	<div class="input_area">
 		<label for="userPw">비밀번호</label>
-		<input type="password" id="userPw" name="userPw" required="required" />
+		<input type="password" id="userPw" name="userPw" onchange="checkPw()" required="required" />
+	</div>
+	
+	<div class="input_area">
+		<label for="userPwconfirm">비밀번호 확인</label>
+		<input type="password" id="userPwconfirm" name="userPwconfirm" onchange="checkPw()" required="required" />&nbsp;<span id="check"></span>
 	</div>
 	
 	<div class="input_area">
