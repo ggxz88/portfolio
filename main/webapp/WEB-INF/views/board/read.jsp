@@ -30,13 +30,13 @@
 	
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<a href='/board/modify?boardNo=${board.boardNo}'><input type="button" value="<spring:message code="action.edit" />"></a>
-				<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: board.action='remove';"/>
+				<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/remove'; method='post'; "/>
 			</sec:authorize>
 			
 			<sec:authorize access="hasRole('ROLE_MEMBER')">
 				<c:if test="${pinfo.username eq board.writer}">
 					<a href='/board/modify?boardNo=${board.boardNo}'><input type="button" value="<spring:message code="action.edit" />"></a>
-					<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: board.action='remove';"/>
+					<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/remove'; method='post';"/>
 				</c:if>
 			</sec:authorize>
 			
