@@ -14,6 +14,7 @@ public class Board implements Serializable {
 	private String writer;
 	
 	private Date regDate;
+	
 
 	public int getBoardNo() {
 		return boardNo;
@@ -53,6 +54,11 @@ public class Board implements Serializable {
 
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
+	}
+	
+	@Override
+	public String toString() {
+		return "Board [boardNo=" + boardNo + ", title=" + title + ", content=" + content + ",writer=" + writer + ", regdate=" + regDate + "]";
 	}
 	
 }

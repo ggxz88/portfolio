@@ -9,7 +9,11 @@
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<input type="hidden" name="boardNo" value="${board.boardNo}" />
-
+	<input type="hidden" name="page" value="${pgrq.page}" />
+	<input type="hidden" name="sizePerPage" value="${pgrq.sizePerPage}" />
+	<input type="hidden" name="searchType" value="${pgrq.searchType}" />
+	<input type="hidden" name="keyword" value="${pgrq.keyword}" />
+	
 	<div class="input_area">
 		<label for="title">제목</label>
 		<input type="text" id="title" name="title" value="${board.title}" required="required" />
@@ -40,7 +44,7 @@
 				</c:if>
 			</sec:authorize>
 			
-		<a href="list"><input type="button" value="<spring:message code="action.list" />"></a>
+		<a href="/board/list${pgrq.toUriString()}"><input type="button" value="<spring:message code="action.list" />"></a>
 			
 	</div>
 	

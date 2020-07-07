@@ -9,6 +9,10 @@
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<input type="hidden" name="boardNo" value="${board.boardNo}" />
+	<input type="hidden" name="page" value="${pgrq.page}" />
+	<input type="hidden" name="sizePerPage" value="${pgrq.sizePerPage}" />
+	<input type="hidden" name="searchType" value="${pgrq.searchType}" />
+	<input type="hidden" name="keyword" value="${pgrq.keyword}" />
 
 	<div class="input_area">
 		<label for="title">제목</label>
@@ -29,18 +33,18 @@
 		<sec:authentication property="principal" var="pinfo" />
 	
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<a href='/board/modify?boardNo=${board.boardNo}'><input type="button" value="<spring:message code="action.edit" />"></a>
+				<a href='/board/modify${pgrq.toUriString()}&boardNo=${board.boardNo}'><input type="button" value="<spring:message code="action.edit" />"></a>
 				<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/remove'; method='post'; "/>
 			</sec:authorize>
 			
 			<sec:authorize access="hasRole('ROLE_MEMBER')">
 				<c:if test="${pinfo.username eq board.writer}">
-					<a href='/board/modify?boardNo=${board.boardNo}'><input type="button" value="<spring:message code="action.edit" />"></a>
+					<a href='/board/modify${pgrq.toUriString()}&boardNo=${board.boardNo}'><input type="button" value="<spring:message code="action.edit" />"></a>
 					<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/remove'; method='post';"/>
 				</c:if>
 			</sec:authorize>
 			
-		<a href="list"><input type="button" value="<spring:message code="action.list" />"></a>
+		<a href="/board/list${pgrq.toUriString()}"><input type="button" value="<spring:message code="action.list" />"></a>
 			
 	</div>
 	
