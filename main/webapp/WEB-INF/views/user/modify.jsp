@@ -3,7 +3,7 @@
 
 <h2></h2>
 
-<form action="/user/modify">
+<form action="/user/modify" method="post">
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 

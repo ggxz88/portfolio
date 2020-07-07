@@ -29,8 +29,8 @@
 	</div>
 	
 	<div>
-		<a href="modify?userNo=${member.userNo}"><input type="button" value="<spring:message code="action.edit" />"></a>
-		<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: member.action='remove';"/>
+		<a href="modify?userId=${member.userId}"><input type="button" value="<spring:message code="action.edit" />"></a>
+		<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/user/remove'; method='post'; " />
 		<a href="list"><input type="button" value="<spring:message code="action.list" />"></a>
 	</div>
 	

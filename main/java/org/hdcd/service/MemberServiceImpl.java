@@ -42,6 +42,7 @@ public class MemberServiceImpl implements MemberService {
 	public void modify(Member member) throws Exception {
 		mapper.update(member);
 		
+		/*
 		String userId = member.getUserId();
 		
 		mapper.deleteAuth(userId);
@@ -65,6 +66,7 @@ public class MemberServiceImpl implements MemberService {
 			
 			mapper.createAuth(memberAuth);
 		}
+		*/
 	}
 	
 	@Transactional

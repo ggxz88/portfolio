@@ -1,5 +1,8 @@
 package org.hdcd.common.security;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,11 +18,13 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 	private static final Logger logger = LoggerFactory.getLogger(CustomLoginSuccessHandler.class);
 
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 		
 		CustomUser customUser = (CustomUser)authentication.getPrincipal();
 		Member member = customUser.getMember();
 		
 		logger.info("Userid = " + member.getUserId());	
+		
+		super.onAuthenticationSuccess(request, response, authentication);
 	}
 }
