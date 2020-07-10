@@ -29,6 +29,6 @@ public class MyPageController {
 
 		String userId = member.getUserId();
 		
-		//model.addAttribute("mycoin", service.getCoin(userNo));
+		model.addAttribute("mycoin", service.getCoin(userId));
 	}
 }

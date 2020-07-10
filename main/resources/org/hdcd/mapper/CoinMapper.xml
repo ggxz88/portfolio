@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.hdcd.mapper.CoinMapper">
+
+	<insert id="create">
+		INSERT INTO charge_coin_history
+			(
+			userId,
+			amount
+			)
+		VALUES
+			(
+			#{userId},
+			#{amount}
+			)
+	</insert>
+	
+	<update id="charge">
+		UPDATE member
+		   SET coin = (coin + #{amount}),
+		   	updDate = now()
+		 WHERE userId = #{userId}
+	</update>
+	
+	<select id="list" resultType="org.hdcd.domain.Coin">
+		<![CDATA[
+			SELECT historyNo,
+				userId,
+				amount,
+				regDate
+			  FROM charge_coin_history
+			 WHERE historyNo > 0
+			 AND userId = #{userId}
+			ORDER BY historyNo DESC
+		]]>
+	</select>
+
+</mapper>

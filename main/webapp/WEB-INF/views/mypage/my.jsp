@@ -18,18 +18,15 @@
 			<td>
 		        <sec:authentication property="principal.username"/> 님 
 		    </td>
-		    <!--
 			<td>
 				코인 : ${mycoin}
 			</td>
-			-->
-			<td>
 		</tr>
 	</table>
 	<br><br>    
 	<sec:authorize access="hasRole('ROLE_MEMBER')">
 		<div align="left">
-			
+			<a href="/coin/list"><spring:message code="menu.coin.list" /></a>
 		</div>
 	</sec:authorize>	        	        
 </sec:authorize>
