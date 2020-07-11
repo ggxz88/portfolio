@@ -83,7 +83,7 @@ public class NoticeController {
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public void modifyFrom(int noticeNo, @ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
+	public void modifyForm(int noticeNo, @ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
 		Notice notice = service.read(noticeNo);
 		
 		model.addAttribute(notice);

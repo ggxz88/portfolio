@@ -11,19 +11,22 @@
 			<sec:authorize access="!isAuthenticated()">
 				<td width="120"><a href="/board/list"><spring:message code="menu.board.member" /></a></td>
 				<td width="120"><a href="/notice/list"><spring:message code="menu.notice.member" /></a></td>
+				<td width="120"><a href="/item/list"><spring:message code="menu.item.member" /></a></td>
+			
 			</sec:authorize>
 			
 			<!-- 로그인을 한 경우 -->
 			<sec:authorize access="isAuthenticated()">
 				<!-- 관리자 권한을 가진 사용자인 경우 -->
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<td width="120"><a href="/board/list"><spring:message code="menu.board.member" /></a></td>
+					<td width="120"><a href="/board/list"><spring:message code="menu.board.admin" /></a></td>
 				</sec:authorize>
 				
 				<!-- 회원 권한을 가진 사용자인 경우 -->
 				<sec:authorize access="hasRole('ROLE_MEMBER')">
 					<td width="120"><a href="/board/list"><spring:message code="menu.board.member" /></a></td>
 					<td width="120"><a href="/notice/list"><spring:message code="menu.notice.member" /></a></td>
+					<td width="120"><a href="/item/list"><spring:message code="menu.item.member" /></a></td>
 				</sec:authorize>
 			</sec:authorize>
 			

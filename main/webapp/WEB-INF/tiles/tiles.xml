@@ -31,6 +31,10 @@
 		<put-attribute name="title" value="Coin" />
 		<put-attribute name="content" value="/WEB-INF/views/coin/{1}.jsp" />
 	</definition>
+	<definition name="item/*" extends="main-template">
+		<put-attribute name="title" value="Item" />
+		<put-attribute name="content" value="/WEB-INF/views/item/{1}.jsp" />
+	</definition>
 	
 	<definition name="common-template" template="/WEB-INF/tiles/layouts/common_template.jsp">
 		<put-attribute name="title" value="Common" />

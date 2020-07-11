@@ -28,6 +28,8 @@
 			<a href="/board/list"><spring:message code="menu.board.admin" /></a>
 			<br><br>
 			<a href="/notice/list"><spring:message code="menu.notice.admin" /></a>
+			<br><br>
+			<a href="/item/list"><spring:message code="menu.item.admin" /></a>
 			<br>
 		</div>
 	</sec:authorize>

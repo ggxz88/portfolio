@@ -33,6 +33,14 @@
 	<!-- 스프링 시큐리티 애너테이션을 활성화 -->
 	<security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled" />
 	
+	<!-- 서블릿 표준용 MultipartResolver를 스프링 빈으로 정의 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
+	
+	<!-- 업로드된 파일 저장 위치 설정 -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\\upload"></beans:constructor-arg>
+	</beans:bean>
+	
 	<!-- Tiles 뷰 리졸버 -->
 	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />

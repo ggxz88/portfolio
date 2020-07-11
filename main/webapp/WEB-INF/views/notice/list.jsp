@@ -52,7 +52,7 @@
 	</c:if>
 	
 	<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
-		<a href="/board/list${pagination.makeQuery(idx)}">${idx}</a>
+		<a href="/notice/list${pagination.makeQuery(idx)}">${idx}</a>
 	</c:forEach>
 	
 	<c:if test="${pagination.next && pagination.endPage > 0}">
