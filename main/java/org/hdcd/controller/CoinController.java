@@ -76,5 +76,16 @@ public class CoinController {
 		return "coin/success";
 	}
 	
+	//구매내역 보기
+	@RequestMapping(value = "/listPay", method = RequestMethod.GET)
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	public void listPayHistory(Model model, Authentication authentication) throws Exception {
+		CustomUser customUser = (CustomUser) authentication.getPrincipal();
+		Member member = customUser.getMember();
+		
+		String userId = member.getUserId();
+		
+		model.addAttribute("list", service.listPayHistory(userId));
+	}
 	
 }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -11,9 +12,14 @@ import javax.annotation.Resource;
 import org.apache.commons.io.IOUtils;
 import org.hdcd.common.domain.PageRequest;
 import org.hdcd.common.domain.Pagination;
+import org.hdcd.common.security.domain.CustomUser;
 import org.hdcd.domain.Item;
+import org.hdcd.domain.Member;
 import org.hdcd.service.ItemService;
+import org.hdcd.service.MemberService;
+import org.hdcd.service.UserItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -35,10 +41,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ItemController {
 	
 	private final ItemService service;
+	private final MemberService memberService;
+	private final UserItemService userItemService;
+	private final MessageSource messageSource;
 	
 	@Autowired
-	public ItemController(ItemService service) {
+	public ItemController(ItemService service, MemberService memberService, UserItemService userItemService, MessageSource messageSource) {
 		this.service = service;
+		this.memberService = memberService;
+		this.userItemService = userItemService;
+		this.messageSource = messageSource;
 	}
 	
 	@Resource(name = "uploadPath")
@@ -74,7 +86,6 @@ public class ItemController {
 	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void list(@ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
 		List<Item> list = service.list(pageRequest);
 		
@@ -262,5 +273,29 @@ public class ItemController {
 		return entity;
 	}
 
+	//상품 구매
+	@RequestMapping(value = "/buy", method = RequestMethod.POST)
+	public String buy(Integer itemId, RedirectAttributes rttr, Authentication authentication) throws Exception {
+		CustomUser customUser = (CustomUser) authentication.getPrincipal();
+		Member member = customUser.getMember();
+		
+		String userId = member.getUserId();
+		
+		member.setCoin(memberService.getCoin(userId));
+		
+		Item item = service.read(itemId);
+		
+		userItemService.register(member, item);
+		
+		String message = messageSource.getMessage("item.purchaseComplete", null, Locale.KOREAN);
+		rttr.addFlashAttribute("msg", message);
+		
+		return "redirect:/item/success";
+	}
 	
+	// 상품 구매 성공
+	@RequestMapping(value = "/success", method = RequestMethod.GET)
+	public String success() throws Exception {
+		return "item/success";
+	}
 }

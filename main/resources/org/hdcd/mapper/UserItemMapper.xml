@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.hdcd.mapper.UserItemMapper">
+
+	<insert id="create">
+		INSERT INTO user_item 
+			(
+			userId,
+			itemId
+			)
+		VALUES
+			(
+			#{userId},
+			#{itemId}
+			)
+	</insert>
+	
+	<select id="read" resultType="org.hdcd.domain.UserItem">
+		SELECT a.userItemNo,
+			a.userId,
+			a.itemId,
+			a.regDate,
+			b.itemName,
+			b.price,
+			b.description,
+			b.pictureUrl
+		  FROM user_item a INNER JOIN item b ON a.itemId = b.itemId
+		 WHERE userItemNo = #{userItemNo}
+	</select>
+	
+	<select id="listAll" resultType="org.hdcd.domain.UserItem">
+		<![CDATA[
+			SELECT a.userItemNo,
+				a.userId,
+				a.itemId,
+				a.regDate,
+				b.itemName,
+				b.price,
+				b.description,
+				b.pictureUrl
+			  FROM user_item a INNER JOIN item b ON a.itemId = b.itemId
+			 WHERE a.userItemNo  > 0
+			ORDER BY a.userItemNo DESC,
+				regDate DESC
+		]]>
+	</select>
+	
+	<select id="list" resultType="org.hdcd.domain.UserItem">
+		<![CDATA[
+			SELECT a.userItemNo,
+				a.userId,
+				a.itemId,
+				a.regDate,
+				b.itemName,
+				b.price,
+				b.description,
+				b.pictureUrl
+			  FROM user_item a INNER JOIN item b ON a.itemId = b.itemId
+			 WHERE userId = #{userId}
+			ORDER BY a.userItemNo DESC,
+				regDate DESC
+		]]>
+	</select>
+
+</mapper>
