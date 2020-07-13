@@ -48,5 +48,9 @@
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="content" value="/WEB-INF/views/auth/{1}.jsp" />
 	</definition>
+	<definition name="error/*" extends="common-template">
+		<put-attribute name="title" value="Error" />
+		<put-attribute name="content" value="/WEB-INF/views/error/{1}.jsp" />
+	</definition>
 	
 </tiles-definitions>
