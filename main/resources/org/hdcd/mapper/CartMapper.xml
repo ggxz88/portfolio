@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.hdcd.mapper.CartMapper">
+
+	<insert id="create">
+		INSERT INTO cart
+			(
+			userId,
+			itemId
+			)
+		VALUES
+			(
+			#{userId},
+			#{itemId}
+			)
+	</insert>
+	
+	<update id="update">
+		UPDATE cart
+		  SET amount = #{amount}
+		WHERE cartNo = #{cartNo}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM cart
+		WHERE cartNo = #{cartNo}
+	</delete>
+	
+	<select id="list" resultType="org.hdcd.domain.Cart">
+		<![CDATA[
+			SELECT a.cartNo,
+				a.userId,
+				a.itemId,
+				a.amount,
+				b.price,
+				b.itemName
+			  FROM cart a INNER JOIN item b ON a.itemId = b.itemId
+			 WHERE cartNo > 0
+			   AND a.userId = #{userId}
+			ORDER BY cartNo DESC
+		]]>
+	</select>
+	
+	<select id="priceAll" resultType="int">
+		<![CDATA[
+			SELECT SUM(a.price*b.amount)
+			  FROM item a INNER JOIN cart b ON a.itemId = b.itemId
+			 WHERE b.userId = #{userId}
+		]]>
+	</select>
+
+</mapper>

@@ -39,6 +39,10 @@
 		<put-attribute name="title" value="UserItem" />
 		<put-attribute name="content" value="/WEB-INF/views/useritem/{1}.jsp" />
 	</definition>
+	<definition name="cart/*" extends="main-template">
+		<put-attribute name="title" value="Cart" />
+		<put-attribute name="content" value="/WEB-INF/views/cart/{1}.jsp" />
+	</definition>
 	
 	<definition name="common-template" template="/WEB-INF/tiles/layouts/common_template.jsp">
 		<put-attribute name="title" value="Common" />

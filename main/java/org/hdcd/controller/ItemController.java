@@ -15,6 +15,7 @@ import org.hdcd.common.domain.Pagination;
 import org.hdcd.common.security.domain.CustomUser;
 import org.hdcd.domain.Item;
 import org.hdcd.domain.Member;
+import org.hdcd.service.CartService;
 import org.hdcd.service.ItemService;
 import org.hdcd.service.MemberService;
 import org.hdcd.service.UserItemService;
@@ -43,13 +44,15 @@ public class ItemController {
 	private final ItemService service;
 	private final MemberService memberService;
 	private final UserItemService userItemService;
+	private final CartService cartService;
 	private final MessageSource messageSource;
 	
 	@Autowired
-	public ItemController(ItemService service, MemberService memberService, UserItemService userItemService, MessageSource messageSource) {
+	public ItemController(ItemService service, MemberService memberService, UserItemService userItemService, CartService cartService, MessageSource messageSource) {
 		this.service = service;
 		this.memberService = memberService;
 		this.userItemService = userItemService;
+		this.cartService = cartService;
 		this.messageSource = messageSource;
 	}
 	
@@ -297,5 +300,29 @@ public class ItemController {
 	@RequestMapping(value = "/success", method = RequestMethod.GET)
 	public String success() throws Exception {
 		return "item/success";
+	}
+	
+	@RequestMapping(value = "/cartadd", method = RequestMethod.POST)
+	public String cartadd(Integer itemId, Integer cartNo, RedirectAttributes rttr, Authentication authentication) throws Exception {
+		CustomUser customUser = (CustomUser) authentication.getPrincipal();
+		Member member = customUser.getMember();
+		
+		String userId = member.getUserId();
+		
+		//만들기
+		Item item = service.read(itemId);
+		
+		cartService.register(member, item);
+		
+		String message = messageSource.getMessage("cart.addComplete", null, Locale.KOREAN);
+		
+		rttr.addFlashAttribute("msg", message);
+		
+		return "redirect:/item/cartaddsuccess";
+	}
+	
+	@RequestMapping(value = "/cartaddsuccess", method = RequestMethod.GET)
+	public String cartaddsuccess() throws Exception {
+		return "item/cartaddsuccess";
 	}
 }

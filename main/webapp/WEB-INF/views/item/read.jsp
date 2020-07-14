@@ -33,6 +33,7 @@
 	
 	<div>
 		<input type="submit" value="<spring:message code="action.buy" />" onclick="javascript: action='/item/buy'; method='post'; "/>
+		<input type="submit" value="<spring:message code="action.cartadd" />" onclick="javascript: action='/item/cartadd'; method='post'; "/>
 		<a href="/item/list${pgrq.toUriString()}"><input type="button" value="<spring:message code="action.list" />"></a>
 			
 	</div>
