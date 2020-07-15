@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.apache.commons.io.IOUtils;
 import org.hdcd.common.security.domain.CustomUser;
+import org.hdcd.domain.Item;
 import org.hdcd.domain.Member;
 import org.hdcd.domain.UserItem;
 import org.hdcd.exception.NotMyItemException;
@@ -108,6 +109,14 @@ public class UserItemController {
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
 	public void notMyItem(Model model) throws Exception {
 		
+	}
+	
+	
+	@RequestMapping(value = "/rank", method = RequestMethod.GET)
+	public void rank(UserItem userItem, Model model) throws Exception {
+		int itemId = userItem.getItemId();
+		
+		model.addAttribute("list", service.rank(itemId));
 	}
 	
 }

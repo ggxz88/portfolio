@@ -4,6 +4,10 @@
 
 <h2><spring:message code="cart.header.list" /></h2>
 
+<div>
+	<a href="/cart/removeall?userId=${cart.userId}">전체 삭제</a>
+</div>
+
 <table border="1">
 	<tr>
 		<th align="center" width="80"><spring:message code="cart.no" /></th>
@@ -11,11 +15,12 @@
 		<th align="center" width="180"><spring:message code="cart.itemprice" /></th>
 		<th align="center" width="180"><spring:message code="cart.amount" /></th>
 		<th align="center" width="180"><spring:message code="cart.price" /></th>
+		<th align="center" width="80">삭제</th>
 	</tr>
 	<c:choose>
 		<c:when test="${empty list}">
 			<tr>
-				<td colspan="5">
+				<td colspan="6">
 					<spring:message code="common.listEmpty" />
 				</td>
 			</tr>
@@ -28,6 +33,7 @@
 					<td align="center">${cart.price}</td>
 					<td align="center">${cart.amount}</td>
 					<td align="center">${cart.amount * cart.price}</td>
+					<td align="center"><a href="/cart/remove?cartNo=${cart.cartNo}">삭제</a></td>
 				</tr>	
 			</c:forEach>
 		</c:otherwise>			

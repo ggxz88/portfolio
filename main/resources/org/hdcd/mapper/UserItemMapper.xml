@@ -63,5 +63,18 @@
 				regDate DESC
 		]]>
 	</select>
-
+	
+	<!-- 랭킹 -->
+	<select id="rank">
+		SELECT a.userItemNo,
+			a.itemId,
+			b.itemName,
+			b.price,
+			COUNT(*) AS purchase
+		  FROM user_item a INNER JOIN item b ON a.itemId = b.itemId
+		 WHERE a.itemId = #{itemId}
+		ORDER BY purchase DESC
+		LIMIT 10
+	</select>
+	
 </mapper>

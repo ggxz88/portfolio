@@ -40,8 +40,13 @@ public class CartServiceImpl implements CartService {
 	}
 	
 	@Override
-	public void remove(Integer cartNo) throws Exception {
+	public void remove(int cartNo) throws Exception {
 		mapper.delete(cartNo);
+	}
+	
+	@Override
+	public void removeAll(String userId) throws Exception {
+		mapper.deleteAll(userId);
 	}
 	
 	@Override
@@ -50,9 +55,12 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public int priceAll() throws Exception {
-		return mapper.priceAll();
+	public int priceAll(String userId) throws Exception {
+		return mapper.priceAll(userId);
 	}
 	
-	
+	@Override
+	public int countItem(int itemId, String userId) throws Exception {
+		return mapper.countItem(itemId, userId);
+	}
 }

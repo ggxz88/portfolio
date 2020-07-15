@@ -4,7 +4,7 @@
 <div align="center">
 <table>
 	<tr>
-		<td width="80"><a href="/"><spring:message code="header.home" /></a></td>
+		<td width="200" align="center"><a href="/"><img src="<spring:url value='/resources/images/image/Home.png'/>" width="150" height="40"></a></td>
 	</tr>
 </table>
 </div>

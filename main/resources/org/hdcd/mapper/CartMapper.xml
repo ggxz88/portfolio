@@ -25,7 +25,12 @@
 	
 	<delete id="delete">
 		DELETE FROM cart
-		WHERE cartNo = #{cartNo}
+		 WHERE cartNo = #{cartNo}
+	</delete>
+	
+	<delete id="deleteAll">
+		DELETE FROM cart
+		 WHERE userId = #{userId}
 	</delete>
 	
 	<select id="list" resultType="org.hdcd.domain.Cart">
@@ -49,6 +54,13 @@
 			  FROM item a INNER JOIN cart b ON a.itemId = b.itemId
 			 WHERE b.userId = #{userId}
 		]]>
+	</select>
+	
+	<select id="countItem" resultType="int">
+		SELECT COUNT(*)
+		  FROM cart
+		 WHERE userId = #{userId}
+		   AND itemId = #{itemId}
 	</select>
 
 </mapper>

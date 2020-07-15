@@ -21,12 +21,13 @@
 				
 				<!-- 관리자 권한을 가진 사용자인 경우 -->
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<td width="100"><a href="/mypage/admin"><spring:message code="adminpage.header" /></a></td>
+					<td width="40"><a href="/mypage/admin"><img src="<spring:url value='/resources/images/image/MyPage.png'/>" width="30" height="30"></a></td>
 				</sec:authorize>
 				
 		    	<!-- 회원 권한을 가진 사용자인 경우 -->
 		    	<sec:authorize access="hasRole('ROLE_MEMBER')">
-			        <td width="100"><a href="/mypage/my"><spring:message code="mypage.header" /></a></td>
+			        <td width="40"><a href="/mypage/my"><img src="<spring:url value='/resources/images/image/MyPage.png'/>" width="30" height="30"></a></td>
+			        <td width="40"><a href="/cart/list"><img src="<spring:url value='/resources/images/image/Cart.png'/>" width="25" height="25"></a></td>
 				</sec:authorize>
     			
         </sec:authorize>

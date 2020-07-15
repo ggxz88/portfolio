@@ -6,7 +6,7 @@
 
 <h2><spring:message code="item.header.list" /></h2>
 
-<form:form modelAttribute="pgrq" method="get" action="list${pgrq.toUriStringByPage(1)}">		
+<form:form modelAttribute="pgrq" method="get" action="list${pgrq.toItemUriStringByPage(1)}">		
 	<form:input path="keyword" />
 	<button id='searchBtn'><spring:message code="action.search" /></button>
 </form:form>

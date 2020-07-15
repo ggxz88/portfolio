@@ -70,4 +70,9 @@ public class UserItemServiceImpl implements UserItemService {
 	public List<UserItem> list(String userId) throws Exception {
 		return mapper.list(userId);
 	}
+	
+	@Override
+	public List<UserItem> rank(Integer itemId) throws Exception {
+		return mapper.rank(itemId);
+	}
 }

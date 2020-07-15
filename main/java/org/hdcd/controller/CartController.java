@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -34,15 +35,40 @@ public class CartController {
 		
 		model.addAttribute("list", service.list(userId));
 	}
-	
-	@RequestMapping(value = "/remove", method = RequestMethod.POST)
+	/*
+	@RequestMapping(value = "/remove", method = RequestMethod.GET)
 	@PreAuthorize("hasRole('ROLE_MEMBER')")
-	public String remove(int cartNo, RedirectAttributes rttr) throws Exception {
+	public String removeForm(int cartNo, Model model) throws Exception {
+		Cart cart = service.read(cartNo);
+		
+		model.addAttribute(cart);
+		
+		return "cart/remove";
+	}
+	*/
+	@RequestMapping(value = "/remove", method = {RequestMethod.POST, RequestMethod.GET})
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	public String remove(@RequestParam int cartNo, RedirectAttributes rttr) throws Exception {
 		service.remove(cartNo);
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/board/list";
+		return "redirect:/cart/list";
+	}
+	
+	@RequestMapping(value = "/removeall", method = {RequestMethod.POST, RequestMethod.GET})
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	public String removeall(RedirectAttributes rttr, Authentication authentication) throws Exception {
+		CustomUser customUser = (CustomUser) authentication.getPrincipal();
+		Member member = customUser.getMember();
+		
+		String userId = member.getUserId();
+		
+		service.removeAll(userId);
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/cart/list";
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
@@ -52,7 +78,7 @@ public class CartController {
 				
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/board/list";
+		return "redirect:/cart/list";
 	}
 	
 	

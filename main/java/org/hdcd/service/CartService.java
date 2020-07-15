@@ -10,16 +10,17 @@ public interface CartService {
 	
 	public void register(Member member, Item item) throws Exception;
 	
-	//public Cart read(Integer cartNo) throws Exception;
+	//public Cart read(int cartNo) throws Exception;
 	
 	public void modify(Cart cart) throws Exception;
 	
-	public void remove(Integer cartNo) throws Exception;
+	public void remove(int cartNo) throws Exception;
 	
-	//public void removeAll() throws Exception;
+	public void removeAll(String userId) throws Exception;
 	
 	public List<Cart> list(String userId) throws Exception;
 
-	public int priceAll() throws Exception;
+	public int priceAll(String userId) throws Exception;
 
+	public int countItem(int itemId, String userId) throws Exception;
 }

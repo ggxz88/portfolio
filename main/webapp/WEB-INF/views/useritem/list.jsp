@@ -29,7 +29,7 @@
 					<td align="center"><a href='/useritem/read?userItemNo=${useritem.userItemNo}'>${useritem.itemName}</a></td>
 					<td align="center">${useritem.price} 원</td>
 					<td align="center"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${useritem.regDate}" /></td>
-					<td align="center"><a href='/useritem/download?userItemNo=${useritem.userItemNo}'>DOWNLOAD</a></td>
+					<td align="center"><a href='/useritem/download?userItemNo=${useritem.userItemNo}'><img src="<spring:url value='/resources/images/image/Download.png'/>" width="30" height="30"></a></td>
 				</tr>	
 			</c:forEach>
 		</c:otherwise>			

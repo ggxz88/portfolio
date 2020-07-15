@@ -309,8 +309,10 @@ public class ItemController {
 		
 		String userId = member.getUserId();
 		
-		//만들기
 		Item item = service.read(itemId);
+		
+		//int count = cartService.countItem(service.read(itemId), userId);
+		
 		
 		cartService.register(member, item);
 		

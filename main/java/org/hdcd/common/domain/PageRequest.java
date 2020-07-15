@@ -92,5 +92,34 @@ public class PageRequest {
 	
 		return uriComponents.toUriString();
 	}
+	
+	public String toItemUriString() {
+		UriComponents uriComponents = UriComponentsBuilder.newInstance()
+			.queryParam("page", this.page)
+			.queryParam("size", this.sizePerPage)
+			.queryParam("keyword", this.keyword)
+			.build();
+	
+		return uriComponents.toUriString();
+	}
+
+	public String toItemUriString(int page) {
+		UriComponents uriComponents = UriComponentsBuilder.newInstance()
+			.queryParam("page", page)
+			.queryParam("size", this.sizePerPage)
+			.queryParam("keyword", this.keyword)
+			.build();
+	
+		return uriComponents.toUriString();
+	}
+
+	public String toItemUriStringByPage(int page) {
+		UriComponents uriComponents = UriComponentsBuilder.newInstance()
+			.queryParam("page", page)
+			.queryParam("size", this.sizePerPage)
+			.build();
+	
+		return uriComponents.toUriString();
+	}
 
 }

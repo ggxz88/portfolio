@@ -5,32 +5,8 @@
 <div class="Menu" align="center">
 	<table>
 		<tr>
-			<td width="80"><a href="/"><spring:message code="header.home" /></a></td>
-			
-			<!-- 로그인을 하지 않은 경우 -->
-			<sec:authorize access="!isAuthenticated()">
-				<td width="120"><a href="/board/list"><spring:message code="menu.board.member" /></a></td>
-				<td width="120"><a href="/notice/list"><spring:message code="menu.notice.member" /></a></td>
-				<td width="120"><a href="/item/list"><spring:message code="menu.item.member" /></a></td>
-			
-			</sec:authorize>
-			
-			<!-- 로그인을 한 경우 -->
-			<sec:authorize access="isAuthenticated()">
-				<!-- 관리자 권한을 가진 사용자인 경우 -->
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<td width="120"><a href="/board/list"><spring:message code="menu.board.admin" /></a></td>
-				</sec:authorize>
-				
-				<!-- 회원 권한을 가진 사용자인 경우 -->
-				<sec:authorize access="hasRole('ROLE_MEMBER')">
-					<td width="120"><a href="/board/list"><spring:message code="menu.board.member" /></a></td>
-					<td width="120"><a href="/notice/list"><spring:message code="menu.notice.member" /></a></td>
-					<td width="120"><a href="/item/list"><spring:message code="menu.item.member" /></a></td>
-				</sec:authorize>
-			</sec:authorize>
-			
-			
+			<td width="200" align="center"><a href="/"><img src="<spring:url value='/resources/images/image/Home.png'/>" width="150" height="40"></a></td>
+			<td width="40" align="center"><a href="/item/list"><img src="<spring:url value='/resources/images/image/Gallery_blue.png'/>" width="35" height="35"></a></td>
 		</tr>
 	</table>
 </div>
