@@ -16,5 +16,5 @@ public interface UserItemService {
 	
 	public List<UserItem> list(String userId) throws Exception;
 	
-	public List<UserItem> rank(Integer itemId) throws Exception;
+	public List<UserItem> rank(int itemId) throws Exception;
 }

@@ -3,12 +3,12 @@ package org.hdcd.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.apache.commons.io.IOUtils;
 import org.hdcd.common.security.domain.CustomUser;
-import org.hdcd.domain.Item;
 import org.hdcd.domain.Member;
 import org.hdcd.domain.UserItem;
 import org.hdcd.exception.NotMyItemException;
@@ -116,7 +116,9 @@ public class UserItemController {
 	public void rank(UserItem userItem, Model model) throws Exception {
 		int itemId = userItem.getItemId();
 		
-		model.addAttribute("list", service.rank(itemId));
+		List<UserItem> rank = service.rank(itemId);
+		
+		model.addAttribute("list", rank);
 	}
 	
 }

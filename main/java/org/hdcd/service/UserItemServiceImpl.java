@@ -72,7 +72,7 @@ public class UserItemServiceImpl implements UserItemService {
 	}
 	
 	@Override
-	public List<UserItem> rank(Integer itemId) throws Exception {
+	public List<UserItem> rank(int itemId) throws Exception {
 		return mapper.rank(itemId);
 	}
 }

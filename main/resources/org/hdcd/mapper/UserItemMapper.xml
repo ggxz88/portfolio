@@ -65,16 +65,15 @@
 	</select>
 	
 	<!-- 랭킹 -->
-	<select id="rank">
-		SELECT a.userItemNo,
-			a.itemId,
+	<select id="rank" resultType="org.hdcd.domain.UserItem">
+		SELECT a.itemId,
 			b.itemName,
-			b.price,
-			COUNT(*) AS purchase
-		  FROM user_item a INNER JOIN item b ON a.itemId = b.itemId
-		 WHERE a.itemId = #{itemId}
-		ORDER BY purchase DESC
-		LIMIT 10
+			b.price, 
+			COUNT(*) AS cnt 
+		  FROM user_item a INNER JOIN item b ON a.itemId = b.itemId 
+		GROUP BY a.itemId 
+		ORDER BY cnt DESC 
+		LIMIT 10;
 	</select>
 	
 </mapper>
