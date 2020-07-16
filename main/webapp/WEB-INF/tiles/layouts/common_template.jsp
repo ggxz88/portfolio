@@ -6,7 +6,7 @@
 	<title><tiles:getAsString name="title" /></title>
 </head>
 
-<script src="/resources/js/jQuery-2.1.4.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 <body>
 

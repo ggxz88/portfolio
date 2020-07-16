@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<h2></h2>
+<h2><spring:message code="board.header.read" /></h2>
 
 <form action="/board/read">
 
@@ -15,17 +15,17 @@
 	<input type="hidden" name="keyword" value="${pgrq.keyword}" />
 
 	<div class="input_area">
-		<label for="title">제목</label>
+		<label for="title"><spring:message code="board.title" /></label>
 		<input type="text" id="title" name="title" value="${board.title}" required="required" readonly />
 	</div>
 	
 	<div class="input_area">
-		<label for="writer">작성자</label>
+		<label for="writer"><spring:message code="board.writer" /></label>
 		<input type="text" id="writer" name="writer" value="${board.writer}" required="required" readonly />
 	</div>
 	
 	<div class="input_area">
-		<label for="content">내용</label>
+		<label for="content"><spring:message code="board.content" /></label>
 		<input type="text" id="content" name="content" value="${board.content}" required="required" readonly />
 	</div>
 	

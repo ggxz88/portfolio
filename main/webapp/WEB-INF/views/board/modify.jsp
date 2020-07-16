@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<h2></h2>
+<h2><spring:message code="board.header.modify" /></h2>
 
 <form action="/board/modify" method="post">
 
@@ -15,17 +15,17 @@
 	<input type="hidden" name="keyword" value="${pgrq.keyword}" />
 	
 	<div class="input_area">
-		<label for="title">제목</label>
+		<label for="title"><spring:message code="board.title" /></label>
 		<input type="text" id="title" name="title" value="${board.title}" required="required" />
 	</div>
 	
 	<div class="input_area">
-		<label for="writer">작성자</label>
+		<label for="writer"><spring:message code="board.writer" /></label>
 		<input type="text" id="writer" name="writer" value="${board.writer}" required="required" />
 	</div>
 	
 	<div class="input_area">
-		<label for="content">내용</label>
+		<label for="content"><spring:message code="board.content" /></label>
 		<input type="text" id="content" name="content" value="${board.content}" required="required" />
 	</div>
 	
@@ -33,13 +33,13 @@
 		<sec:authentication property="principal" var="pinfo" />
 	
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<button type="submit" id="modify" name="modify">수정</button>
+				<button type="submit" id="modify" name="modify"><spring:message code="action.modify" /></button>
 				<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/remove';"/>
 			</sec:authorize>
 			
 			<sec:authorize access="hasRole('ROLE_MEMBER')">
 				<c:if test="${pinfo.username eq board.writer}">
-					<button type="submit" id="modify" name="modify">수정</button>
+					<button type="submit" id="modify" name="modify"><spring:message code="action.modify" /></button>
 					<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/remove';"/>
 				</c:if>
 			</sec:authorize>

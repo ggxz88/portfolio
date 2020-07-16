@@ -1,5 +1,7 @@
 package org.hdcd.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.hdcd.domain.Member;
 import org.hdcd.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -111,5 +114,21 @@ public class MemberController {
 		}
 		
 		return "redirect:/user/setupFailure";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public int idChk(HttpServletRequest req) throws Exception {
+		
+		String userId = req.getParameter("userId");
+		Member idChk = service.idChk(userId);
+		
+		int result = 0;
+		
+		if(idChk != null) {
+			result = 1;
+		}
+		
+		return result;
 	}
 }

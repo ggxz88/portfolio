@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<h2></h2>
+<h2><spring:message code="notice.header.read" /></h2>
 
 <form action="/notice/read">
 
@@ -14,12 +14,12 @@
 	<input type="hidden" name="keyword" value="${pgrq.keyword}" />
 
 	<div class="input_area">
-		<label for="title">제목</label>
+		<label for="title"><spring:message code="notice.title" /></label>
 		<input type="text" id="title" name="title" value="${notice.title}" required="required" readonly />
 	</div>
 	
 	<div class="input_area">
-		<label for="content">내용</label>
+		<label for="content"><spring:message code="notice.content" /></label>
 		<input type="text" id="content" name="content" value="${notice.content}" required="required" readonly />
 	</div>
 	

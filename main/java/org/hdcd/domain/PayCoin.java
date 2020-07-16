@@ -11,7 +11,7 @@ public class PayCoin implements Serializable {
 	private String userId;
 	
 	private int itemId;
-	private int itemName;
+	private String itemName;
 	
 	private int amount;
 	private Date regDate;
@@ -34,10 +34,10 @@ public class PayCoin implements Serializable {
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
-	public int getItemName() {
+	public String getItemName() {
 		return itemName;
 	}
-	public void setItemName(int itemName) {
+	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
 	public int getAmount() {

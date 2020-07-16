@@ -71,7 +71,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Transactional
 	@Override
-	public void setupAdmin(Member member) throws Exception{
+	public void setupAdmin(Member member) throws Exception {
 		mapper.create(member);
 		
 		MemberAuth memberAuth = new MemberAuth();
@@ -81,5 +81,11 @@ public class MemberServiceImpl implements MemberService {
 		
 		mapper.createAuth(memberAuth);
 	}
+	
+	@Override
+	public Member idChk(String userId) throws Exception {
+		return mapper.idChk(userId);
+	}
+
 	
 }

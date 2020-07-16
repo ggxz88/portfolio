@@ -122,4 +122,9 @@
 		  FROM member
 	</select>
 	
+	<select id="idChk" resultType="org.hdcd.domain.Member">
+		SELECT userId
+		  FROM member
+		 WHERE userId = #{userId}
+	</select>
 </mapper>

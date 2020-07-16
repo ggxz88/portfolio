@@ -5,7 +5,7 @@
 <h2><spring:message code="cart.header.list" /></h2>
 
 <div>
-	<a href="/cart/removeall?userId=${cart.userId}">전체 삭제</a>
+	<a href="/cart/removeall?userId=${cart.userId}"><spring:message code="cart.removeall" /></a>
 </div>
 
 <table border="1">
@@ -33,7 +33,7 @@
 					<td align="center">${cart.price}</td>
 					<td align="center">${cart.amount}</td>
 					<td align="center">${cart.amount * cart.price}</td>
-					<td align="center"><a href="/cart/remove?cartNo=${cart.cartNo}">삭제</a></td>
+					<td align="center"><a href="/cart/remove?cartNo=${cart.cartNo}"><spring:message code="action.remove" /></a></td>
 				</tr>	
 			</c:forEach>
 		</c:otherwise>			

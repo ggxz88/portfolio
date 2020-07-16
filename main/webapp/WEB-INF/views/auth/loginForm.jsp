@@ -14,12 +14,12 @@
 <form method="post" action="/login">
 	<table>
 		<tr>
-			<td>아이디</td>
+			<td><spring:message code="input.id" /></td>
 			<td><input type="text" name="username" value="admin"></td>
 			
 		</tr>
 		<tr>
-			<td>비밀번호</td>
+			<td><spring:message code="input.password" /></td>
 			<td><input type="password" name="password" value="admin"></td>
 			
 		</tr>
