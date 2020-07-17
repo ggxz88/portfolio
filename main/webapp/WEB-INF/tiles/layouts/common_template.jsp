@@ -4,6 +4,7 @@
 <html>
 <head>
 	<title><tiles:getAsString name="title" /></title>
+	<link type="text/css" rel="stylesheet" href="<spring:url value='/resources/css/style.css'/>">
 </head>
 
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>

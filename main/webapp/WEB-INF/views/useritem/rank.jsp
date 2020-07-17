@@ -5,25 +5,6 @@
 
 <h2>상품 랭킹</h2>
 
-<!-- 
-<table>
-	<c:forEach var="i" begin="1" end="10">
-		<tr>
-			<td>${i}</td>
-		
-		</tr>
-	</c:forEach>
-</table>
-
-<table>
-	<c:forEach items="${list}" var="rank">
-		<tr>
-			<td align="center"><a href='/item/read?itemId=${rank.itemId}'>${rank.itemName}</a></td>
-			<td align="center">${rank.price} 원</td>
-		</tr>	
-	</c:forEach>
-</table>
--->
 <div style="float: left; width:33%">
 	<c:forEach var="i" begin="1" end="10">
 		${i}.

@@ -10,7 +10,7 @@
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-	<div class="id-text">
+	<div class="input_area">
 		<label for="userId"><spring:message code="user.userId" /></label>
 		<input type="text" id="userId" name="userId" required="required" />
 		<button type="button" class="idChk">아이디 확인</button>

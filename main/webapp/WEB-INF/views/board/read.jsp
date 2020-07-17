@@ -16,17 +16,17 @@
 
 	<div class="input_area">
 		<label for="title"><spring:message code="board.title" /></label>
-		<input type="text" id="title" name="title" value="${board.title}" required="required" readonly />
+		<input type="text" id="title" name="title" value="${board.title}" readonly />
 	</div>
 	
 	<div class="input_area">
 		<label for="writer"><spring:message code="board.writer" /></label>
-		<input type="text" id="writer" name="writer" value="${board.writer}" required="required" readonly />
+		<input type="text" id="writer" name="writer" value="${board.writer}" readonly />
 	</div>
 	
 	<div class="input_area">
 		<label for="content"><spring:message code="board.content" /></label>
-		<input type="text" id="content" name="content" value="${board.content}" required="required" readonly />
+		<textarea id="content" name="content" readonly >${board.content}</textarea>
 	</div>
 	
 	<div>

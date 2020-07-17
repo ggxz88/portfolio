@@ -35,6 +35,12 @@ public class CartServiceImpl implements CartService {
 	}
 	
 	@Override
+	public Cart read(int cartNo) throws Exception {
+		return mapper.read(cartNo);
+	}
+
+	
+	@Override
 	public void modify(Cart cart) throws Exception {
 		mapper.update(cart);
 	}

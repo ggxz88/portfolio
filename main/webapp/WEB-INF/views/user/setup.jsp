@@ -31,6 +31,11 @@
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 	<div class="input_area">
+		<label for="userId"><spring:message code="user.userId" /></label>
+		<input type="text" id="userId" name="userId" required="required" value="admin"/>
+	</div>
+	
+	<div class="input_area">
 		<label for="userPw"><spring:message code="user.userPw" /></label>
 		<input type="password" id="userPw" name="userPw" onchange="checkPw()" required="required" />
 	</div>
@@ -47,12 +52,12 @@
 		<input type="text" id="userName" name="userName" required="required" />
 	</div>
 	
-	<div class="input_area">
+	<div class="email_area">
 		<label for="email"><spring:message code="user.email" /></label>
 		<input type="email" id="email" name="email" placeholder="example@email.com" required="required" />
 	</div>
 	
-	<div class="input_area">
+	<div class="phone_area">
 		<label for="phone"><spring:message code="user.phone" /></label>
 		<input type="text" id="phone" name="phone" placeholder="01X-XXXX-XXXX" required="required" />
 	</div>

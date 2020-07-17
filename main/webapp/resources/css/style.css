@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+@font-face {
+	font-family: 'NanumGothicRegular';
+	src: url('fonts/NanumGothicRegular.eot');
+	src:url('fonts/NanumGothicRegular.eot?#iefix') format(‘embedded-opentype’), 
+	url('fonts/NanumGothicRegular.woff') format(‘woff’), 
+	url('fonts/NanumGothicRegular.ttf') format('truetype');
+}
+
+
+body, table, div {
+	font-family: 'NanumGothicRegular', arial, verdana, sans-serif;
+}
+
+input[type="text"] {
+	font-family: 'NanumGothicRegular';
+}

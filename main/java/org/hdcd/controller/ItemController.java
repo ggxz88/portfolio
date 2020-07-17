@@ -277,7 +277,7 @@ public class ItemController {
 	}
 
 	//상품 구매
-	@RequestMapping(value = "/buy", method = RequestMethod.POST)
+	@RequestMapping(value = "/buy", method = {RequestMethod.POST, RequestMethod.GET})
 	public String buy(Integer itemId, RedirectAttributes rttr, Authentication authentication) throws Exception {
 		CustomUser customUser = (CustomUser) authentication.getPrincipal();
 		Member member = customUser.getMember();

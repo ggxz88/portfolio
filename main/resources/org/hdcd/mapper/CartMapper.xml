@@ -17,9 +17,21 @@
 			)
 	</insert>
 	
+	<select id="read" resultType="org.hdcd.domain.Cart">
+		SELECT a.cartNo,
+			a.userId,
+			a.itemId,
+			b.itemName,
+			b.price,
+			a.amount
+		  FROM cart a INNER JOIN item b ON a.itemId = b.itemId
+		 WHERE a.cartNo = #{cartNo}
+			
+	</select>
+	
 	<update id="update">
 		UPDATE cart
-		  SET amount = #{amount}
+		  SET amount = amount + #{amount}
 		WHERE cartNo = #{cartNo}
 	</update>
 	

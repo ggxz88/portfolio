@@ -10,6 +10,8 @@ public interface CartService {
 	
 	public void register(Member member, Item item) throws Exception;
 		
+	public Cart read(int cartNo) throws Exception;
+
 	public void modify(Cart cart) throws Exception;
 	
 	public void remove(int cartNo) throws Exception;

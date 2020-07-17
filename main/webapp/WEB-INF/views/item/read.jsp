@@ -13,12 +13,12 @@
 
 	<div class="input_area">
 		<label for="itemName"><spring:message code="item.itemName" /></label>
-		<input type="text" id="itemName" name="itemName" value="${item.itemName}" required="required" readonly />
+		<input type="text" id="itemName" name="itemName" value="${item.itemName}" readonly />
 	</div>
 	
 	<div class="input_area">
 		<label for="price"><spring:message code="item.itemPrice" /></label>
-		<input type="text" id="price" name="price" value="${item.price}" required="required" readonly />
+		<input type="text" id="price" name="price" value="${item.price}" readonly />
 	</div>
 	
 	<div class="input_area">
@@ -28,7 +28,7 @@
 	
 	<div class="input_area">
 		<label for="description"><spring:message code="item.itemDescription" /></label>
-		<input type="text" id="description" name="description" value="${item.description}" required="required" readonly />
+		<textarea id="description" name="description" readonly >${item.description}</textarea>
 	</div>
 	
 	<div>

@@ -23,7 +23,7 @@
 	
 	<div class="input_area">
 		<label for="content"><spring:message code="board.content" /></label>
-		<input type="text" id="content" name="content" required="required" />
+		<textarea id="content" name="content" required="required" ></textarea>
 	</div>
 	
 	<sec:authorize access="isAuthenticated()">

@@ -15,12 +15,12 @@
 
 	<div class="input_area">
 		<label for="title"><spring:message code="notice.title" /></label>
-		<input type="text" id="title" name="title" value="${notice.title}" required="required" readonly />
+		<input type="text" id="title" name="title" value="${notice.title}" readonly />
 	</div>
 	
 	<div class="input_area">
 		<label for="content"><spring:message code="notice.content" /></label>
-		<input type="text" id="content" name="content" value="${notice.content}" required="required" readonly />
+		<textarea id="content" name="content" readonly >${notice.content}</textarea>
 	</div>
 	
 	<div>

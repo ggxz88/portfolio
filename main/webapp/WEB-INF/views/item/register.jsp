@@ -13,7 +13,7 @@
 	</div>
 	
 	<div class="input_area">
-		<label for="price"><spring:message code="item.itemPrice" />원</label>
+		<label for="price"><spring:message code="item.itemPrice" /></label>
 		<input type="text" id="price" name="price" required="required" />
 	</div>
 		
@@ -29,7 +29,7 @@
 	
 	<div class="input_area">
 		<label for="description"><spring:message code="item.itemDescription" /></label>
-		<input type="text" id="description" name="description" value="${item.description}" required="required" />
+		<textarea id="description" name="description" required="required" ></textarea>
 	</div>
 	
 	<div>

@@ -34,18 +34,10 @@ public class CartController {
 		String userId = member.getUserId();
 		
 		model.addAttribute("list", service.list(userId));
-	}
-	/*
-	@RequestMapping(value = "/remove", method = RequestMethod.GET)
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
-	public String removeForm(int cartNo, Model model) throws Exception {
-		Cart cart = service.read(cartNo);
 		
-		model.addAttribute(cart);
-		
-		return "cart/remove";
+		model.addAttribute("priceall", service.priceAll(userId));
 	}
-	*/
+	
 	@RequestMapping(value = "/remove", method = {RequestMethod.POST, RequestMethod.GET})
 	@PreAuthorize("hasRole('ROLE_MEMBER')")
 	public String remove(@RequestParam int cartNo, RedirectAttributes rttr) throws Exception {

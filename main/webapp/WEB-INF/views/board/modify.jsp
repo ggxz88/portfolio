@@ -26,7 +26,7 @@
 	
 	<div class="input_area">
 		<label for="content"><spring:message code="board.content" /></label>
-		<input type="text" id="content" name="content" value="${board.content}" required="required" />
+		<textarea id="content" name="content" required="required" >${board.content}</textarea>
 	</div>
 	
 	<div>
