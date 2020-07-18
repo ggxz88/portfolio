@@ -74,7 +74,7 @@ public class UserItemController {
 		CustomUser customUser = (CustomUser) authentication.getPrincipal();
 		Member member = customUser.getMember();
 		
-		if(userItem.getUserId() != member.getUserId()) {
+		if(!userItem.getUserId().equals(member.getUserId())) {
 			throw new NotMyItemException("It is Not My Item");
 		}
 		

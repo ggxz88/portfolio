@@ -3,5 +3,5 @@
 	
 <h2><spring:message code="common.error.urlNotFound" /></h2>
 
-<a href="javascript:window.history.back();"><spring:message code="common.error.backPage" /></a><br>
-<a href="/"><spring:message code="common.error.returnHome" /></a>
+<span class="linkbtn"><a href="javascript:window.history.back();"><spring:message code="common.error.backPage" /></a><br></span>
+<span class="linkbtn"><a href="/"><spring:message code="common.error.returnHome" /></a></span>

@@ -5,4 +5,4 @@
 
 <p><spring:message code="item.notMyItem" /></p>
 
-<a href="list"><spring:message code="action.list" /></a>
+<span class="linkbtn"><a href="list"><spring:message code="action.list" /></a></span>

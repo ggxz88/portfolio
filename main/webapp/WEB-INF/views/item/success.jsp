@@ -3,6 +3,6 @@
 
 <div>
 	<h2>${msg}</h2>
-	<a href="/item/list"><spring:message code="action.list" /></a>
-	<a href="/useritem/list"><spring:message code="menu.useritem.list"/></a>
+	<span class="linkbtn"><a href="/item/list"><spring:message code="action.list" /></a></span>
+	<span class="linkbtn"><a href="/useritem/list"><spring:message code="menu.useritem.list"/></a></span>
 </div>

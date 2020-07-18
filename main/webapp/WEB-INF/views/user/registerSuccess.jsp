@@ -4,5 +4,5 @@
 <div>
 	<h2><spring:message code="common.joinMemberSuccess" arguments="${userName}"/></h2>
 	
-	<a href="/auth/login"><spring:message code="action.login" /></a>
+	<span class="linkbtn"><a href="/auth/login"><spring:message code="action.login" /></a></span>
 </div>

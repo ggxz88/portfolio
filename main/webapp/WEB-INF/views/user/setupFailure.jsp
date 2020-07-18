@@ -4,5 +4,5 @@
 <div>
 	<h2><spring:message code="common.cannotSetupAdmin" arguments="${userName}"/></h2>
 	
-	<a href="/"><spring:message code="action.home" /></a>
+	<span class="linkbtn"><a href="/"><spring:message code="action.home" /></a></span>
 </div>

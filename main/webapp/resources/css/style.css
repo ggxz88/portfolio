@@ -166,7 +166,7 @@ a:hover {
 
 #check {
 	position: absolute;
-	top: 415px;
+	top: 340px;
 }
 
 /* list */
@@ -395,6 +395,38 @@ input[type="file"] {
 .mypage .mybtn a:hover {
 	text-decoration: none;
 	background-color: #0F4C81;
+	color: white;
+}
+
+.linkbtn a{
+	display: inline-block;
+	width: 85px;
+	height: 25px;
+  	border:2px solid #0F4C81;
+  	text-align: center;
+  	background-color : #0F4C81;
+  	font-family: 'NanumGothicRegular';
+  	text-decoration: none;
+  	color: white;
+}
+
+.linkbtn a:link {
+	text-decoration: none;
+	color: white;
+}
+
+.linkbtn a:active {
+	text-decoration: none;
+	color: white;
+}
+
+.linkbtn a:visited {
+	text-decoration: none;
+	color: white;
+}
+
+.linkbtn a:hover {
+	text-decoration: none;
 	color: white;
 }
 

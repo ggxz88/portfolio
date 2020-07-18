@@ -5,4 +5,4 @@
 
 <p><spring:message code="coin.notEnoughCoin" /></p>
 
-<a href="charge"><spring:message code="coin.charge" /></a>
+<span class="linkbtn"><a href="charge"><spring:message code="coin.charge" /></a></span>

@@ -3,5 +3,5 @@
 
 <div>
 	<h2>${msg}</h2>
-	<a href="/coin/list"><spring:message code="action.list" /></a>
+	<span class="linkbtn"><a href="/coin/list"><spring:message code="action.list" /></a></span>
 </div>
