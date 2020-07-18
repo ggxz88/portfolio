@@ -5,9 +5,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <h2><spring:message code="user.header.list" /></h2>
-<a href="register"><spring:message code="action.new" /></a>
 
-<table border="1">
+<table id="list" border="1">
 	<tr>
 		<th align="center" width="80"><spring:message code="user.userId" /></th>
 		<th align="center" width="300"><spring:message code="user.userPw" /></th>
@@ -40,6 +39,10 @@
 		</c:otherwise>			
 	</c:choose>
 </table>
+
+<div id="newmake" align="right">
+	<a href="register"><spring:message code="action.new" /></a>
+</div>
 
 <script>
 	var result = "${msg}";

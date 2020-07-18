@@ -3,7 +3,7 @@
 
 <h2><spring:message code="item.header.remove" /></h2>
 
-<form action="/item/remove" method="post">
+<form id="itemremove" action="/item/remove" method="post">
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<input type="hidden" name="itemId" value="${item.itemId}" />

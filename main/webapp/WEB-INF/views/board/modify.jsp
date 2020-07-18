@@ -5,7 +5,7 @@
 
 <h2><spring:message code="board.header.modify" /></h2>
 
-<form action="/board/modify" method="post">
+<form id="modify" action="/board/modify" method="post">
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<input type="hidden" name="boardNo" value="${board.boardNo}" />
@@ -39,7 +39,7 @@
 			
 			<sec:authorize access="hasRole('ROLE_MEMBER')">
 				<c:if test="${pinfo.username eq board.writer}">
-					<button type="submit" id="modify" name="modify"><spring:message code="action.modify" /></button>
+					<button type="submit" id="modifybtn" name="modify"><spring:message code="action.modify" /></button>
 					<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/remove';"/>
 				</c:if>
 			</sec:authorize>

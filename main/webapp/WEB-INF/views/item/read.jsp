@@ -3,7 +3,7 @@
 
 <h2><spring:message code="item.header.read" /></h2>
 
-<form action="/item/read">
+<form id="itemread" action="/item/read">
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<input type="hidden" name="itemId" value="${item.itemId}" />

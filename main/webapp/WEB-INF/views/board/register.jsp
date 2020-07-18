@@ -27,6 +27,6 @@
 	</div>
 	
 	<sec:authorize access="isAuthenticated()">
-		<button type="submit" id="register" name="register"><spring:message code="action.register" /></button>
+		<button type="submit" id="registerbtn" name="register"><spring:message code="action.register" /></button>
 	</sec:authorize>
 </form>

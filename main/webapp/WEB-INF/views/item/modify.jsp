@@ -3,7 +3,7 @@
 
 <h2><spring:message code="item.header.modify" /></h2>
 
-<form action="/item/modify" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+<form id="itemmodify" action="/item/modify" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<input type="hidden" name="itemId" value="${item.itemId}" />
@@ -24,7 +24,7 @@
 	
 	<div class="preview_area">
 		<label for="preview"><spring:message code="item.preview" /></label>
-		<img src="display?itemId=${item.itemId}" width="210" height="240" id="preview" name="preview">
+		<img src="display?itemId=${item.itemId}" width="150" height="150" id="preview" name="preview">
 	</div>
 	
 	<div class="picture_area">
@@ -43,7 +43,7 @@
 	</div>
 	
 	<div>
-		<button type="submit" id="modify" name="modify">수정</button>
+		<button type="submit" id="modifybtn" name="modify">수정</button>
 		<a href="/item/list${pgrq.toUriString()}"><input type="button" value="<spring:message code="action.list" />"></a>
 			
 	</div>

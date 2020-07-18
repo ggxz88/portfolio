@@ -4,24 +4,21 @@
 
 <h2><spring:message code="cart.header.list" /></h2>
 
-<div>
+<div id="removeall">
 	<a href="/cart/removeall?userId=${cart.userId}"><spring:message code="cart.removeall" /></a>
 </div>
 
-<table border="1">
+<table id="list" border="1">
 	<tr>
-		<th align="center" width="80"><spring:message code="cart.no" /></th>
-		<th align="center" width="320"><spring:message code="cart.itemName" /></th>
-		<th align="center" width="180"><spring:message code="cart.itemprice" /></th>
-		<th align="center" width="180"><spring:message code="cart.amount" /></th>
-		<th align="center" width="180"><spring:message code="cart.price" /></th>
-		<th align="center" width="80"><spring:message code="action.remove" /></th>
+		<th align="center" width="420"><spring:message code="cart.info" /></th>
+		<th align="center" width="120"><spring:message code="cart.amount" /></th>
+		<th align="center" width="120"><spring:message code="cart.price" /></th>
 		<th align="center" width="80"><spring:message code="action.buy" /></th>
 	</tr>
 	<c:choose>
 		<c:when test="${empty list}">
 			<tr>
-				<td colspan="7">
+				<td colspan="4">
 					<spring:message code="common.listEmpty" />
 				</td>
 			</tr>
@@ -29,20 +26,28 @@
 		<c:otherwise>
 			<c:forEach items="${list}" var="cart">
 				<tr>
-					<td align="center">${cart.cartNo}</td>
-					<td align="center"><a href='/item/read?itemId=${cart.itemId}'>${cart.itemName}</a></td>
-					<td align="center">${cart.price}</td>
+					<td align="center">
+						<div id="preview_pic" align="left">
+							<p class="item_info">
+								<img src="/item/display?itemId=${cart.itemId}" width="120" height="120" id="preview" name="preview" align="top">
+								<a id="cart_itemname" href='/item/read?itemId=${cart.itemId}'>${cart.itemName}</a>	
+								${cart.price}원
+							</p>
+						</div>
+						<div id="cartremove">
+							<a href="/cart/remove?cartNo=${cart.cartNo}"><img src="<spring:url value='/resources/images/image/Remove.png'/>" width="15" height="15"></a>
+						</div>
+					</td>
 					<td align="center">${cart.amount}</td>
 					<td align="center">${cart.amount * cart.price}</td>
-					<td align="center"><a href="/cart/remove?cartNo=${cart.cartNo}"><spring:message code="action.remove" /></a></td>
-					<td align="center"><a href="/item/buy?itemId=${cart.itemId}"><spring:message code="action.buy"/></a></td>
-		
+					<td id="a_btn" align="center"><a href="/item/buy?itemId=${cart.itemId}"><spring:message code="action.buy"/></a></td>
 				</tr>	
 			</c:forEach>
 		</c:otherwise>			
 	</c:choose>
 </table>
-<br>
+
 <div class="priceall_area" align="right">
-	총 가격 : ${priceall}원
+	총 금액 : ${priceall}원
 </div>
+

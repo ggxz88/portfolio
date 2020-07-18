@@ -6,7 +6,7 @@
 
 <h2><spring:message code="useritem.header.list" /></h2>
 
-<table border="1">
+<table id="list" border="1">
 	<tr>
 		<th align="center" width="80"><spring:message code="useritem.no" /></th>
 		<th align="center" width="100"><spring:message code="useritem.itemName" /></th>

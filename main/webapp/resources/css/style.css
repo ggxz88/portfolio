@@ -8,11 +8,358 @@
 	url('fonts/NanumGothicRegular.ttf') format('truetype');
 }
 
-
 body, table, div {
 	font-family: 'NanumGothicRegular', arial, verdana, sans-serif;
 }
 
-input[type="text"] {
+input {
 	font-family: 'NanumGothicRegular';
 }
+
+input:focus {
+	outline: 2px solid #0F4C81;
+}
+
+button {
+  	width: 100px;
+  	height: 30px;
+  	border:2px solid #0F4C81;
+  	border-radius: 5px;
+  	text-align:center;
+  	background-color : #0F4C81;
+  	font-family: 'NanumGothicRegular';
+  	color: white;
+  	margin-top: 10px;
+}
+
+input[type="button"] {
+	width: 100px;
+  	height: 30px;
+	border: 2px solid #0F4C81;
+	border-radius: 5px;
+  	text-align: center;
+  	background-color : #0F4C81;
+  	font-family: 'NanumGothicRegular';
+  	color: white;
+}
+
+input[type="submit"] {
+	width: 100px;
+  	height: 30px;
+	border:2px solid #0F4C81;
+	border-radius: 5px;
+  	text-align:center;
+  	background-color : #0F4C81;
+  	font-family: 'NanumGothicRegular';
+  	color: white;
+}
+
+a:link {
+	text-decoration: none;
+	color: black;
+}
+
+a:active {
+	text-decoration : underline;
+	color: black;
+}
+
+a:visited {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration : underline;
+	color: black;
+}
+
+
+ /* 멤버 */
+#userregister, #usermodify {
+	width: 300px;
+	margin: auto;
+	border : 1px solid gray;
+	border-radius: 5px;
+	padding: 15px;
+}
+
+#userread {
+	width: 300px;
+	height: 280px;
+	margin: auto;
+	border : 1px solid gray;
+	border-radius: 5px;
+	padding: 15px;
+	
+}
+
+#userregister input, #userregister label,
+#usermodify input, #usermodify label,
+#userread input, #userread label
+{ 
+	display:block;
+}
+
+#userregister label, #usermodify label, #userread label { 
+	float : left;
+	margin-top: 10px;
+}
+
+#userregister input, #usermodify input, #userread input { 
+	float : left;
+	margin-top: 5px;
+	width : 300px;
+}
+
+#userregister button.idChk {
+	position: relative;
+	left : -60px;
+	top : -5px;
+}
+
+#modifybtn input[type="button"], 
+#removebtn input[type="submit"], 
+#listbtn input[type="button"] 
+{
+	width: 96px;
+  	height: 30px;
+	border:2px solid #0F4C81;
+	border-radius: 5px;
+  	text-align:center;
+  	background-color : #0F4C81;
+  	font-family: 'NanumGothicRegular';
+  	color: white;
+  	margin: 2px 2px;
+}
+
+#modifybtn button[type="submit"] {
+	width: 100px;
+  	height: 30px;
+	border:2px solid #0F4C81;
+	border-radius: 5px;
+  	text-align:center;
+  	background-color : #0F4C81;
+  	font-family: 'NanumGothicRegular';
+  	color: white;
+  	margin: 2px 2px;
+  	postion: relative;
+  	right: 45px;
+  	top: 0px;
+}
+
+#listbtn2 input[type="button"] {
+	width: 100px;
+  	height: 30px;
+	border:2px solid #0F4C81;
+	border-radius: 5px;
+  	text-align:center;
+  	background-color : #0F4C81;
+  	font-family: 'NanumGothicRegular';
+  	color: white;
+  	margin: 2px 2px;
+  	position: relative;
+	left : 45px;
+	top : 0px;
+}
+
+
+#check {
+	position: absolute;
+	top: 415px;
+}
+
+/* list */
+#list {
+	border-collapse : collapse;
+	text-align: left;
+	line-height: 1.5;
+	border-top: 1px solid gray;
+	border-left: 3px solid #0F4C81;
+	margin: 20px 10px;
+}
+
+#list th {
+	padding: 10px;
+	font-weight : bold;
+	vertical-align: top;
+	color: #0F4C81;
+	border-right: 1px solid gray;
+	border-bottom: 1px solid gray;
+}
+
+#list td {
+	padding: 10px;
+	vertical-align: middle;
+	border-right: 1px solid gray;
+	border-bottom: 1px solid gray;
+}
+
+#preview_pic {
+	padding: 10px;
+	width: 260px;
+	height: 130px;
+	float: left;
+	display: block;
+}
+
+#cart_itemname {
+	font-size: 15pt;
+}
+
+.item_info {
+	margin: 10px 0px;
+	float: left;
+}
+
+#cartremove {
+	padding: 5px;
+	width: 15px;
+	height: 15px;
+	float: right;
+}
+
+#a_btn a{
+	display: inline-block;
+	width: 45px;
+	height: 25px;
+  	border:2px solid #0F4C81;
+  	text-align:center;
+  	background-color : #0F4C81;
+  	font-family: 'NanumGothicRegular';
+  	text-decoration: none;
+  	color: white;
+}
+
+#a_btn a:link{
+	text-decoration: none;
+	color: white;
+}
+
+#a_btn a:active {
+	color: white;
+}
+
+#a_btn a:visited {
+	text-decoration: none;
+	color: white;
+}
+
+#a_btn a:hover {
+	color: white;
+}
+
+#removeall, #newmake a{
+	display: inline-block;
+	width: 85px;
+	height: 25px;
+  	border:2px solid #0F4C81;
+  	text-align:center;
+  	background-color : #0F4C81;
+  	font-family: 'NanumGothicRegular';
+  	text-decoration: none;
+  	color: white;
+}
+
+#removeall, #newmake a:link{
+	text-decoration: none;
+	color: white;
+}
+
+#removeall, #newmake a:active {
+	color: white;
+}
+
+#removeall, #newmake a:visited {
+	text-decoration: none;
+	color: white;
+}
+
+#removeall, #newmake a:hover {
+	color: white;
+}
+
+#read, #modify, #register {
+	width: 460px;
+	margin: 5px;
+	border : 1px solid gray;
+	border-radius: 5px;
+	padding: 15px;
+}
+
+#read input[type="text"], #read label, #read textarea, 
+#modify input[type="text"], #modify label, #modify textarea,
+#register input[type="text"], #register label, #register textarea  
+{
+	display: block;
+}
+
+#read label, #modify label, #register label { 
+	float : left;
+}
+
+#read input[type="text"], 
+#modify input[type="text"],
+#register input[type="text"] {
+	width: 400px;
+	float: right;
+}
+
+#read textarea, #modify textarea, #register textarea {
+	width: 400px;
+	height: 200px;
+	float: right;
+}
+
+#read textarea:focus, 
+#modify textarea:focus, 
+#register textarea:focus
+{
+	outline: 2px solid #0F4C81;
+}
+
+#itemread, #itemmodify, #itemregister {
+	width: 460px;
+	margin: 5px;
+	border : 1px solid gray;
+	border-radius: 5px;
+	padding: 15px;
+}
+
+#itemread input[type="text"], #itemread label, #itemread textarea, 
+#itemmodify input[type="text"], #itemmodify label, #itemmodify textarea,
+#itemregister input[type="text"], #itemregister label, #itemregister textarea  
+{
+	display: block;
+}
+
+#itemread label, #itemmodify label, #itemregister label { 
+	float : left;
+}
+
+#itemread input[type="text"], 
+#itemmodify input[type="text"],
+#itemregister input[type="text"] {
+	width: 370px;
+	float: right;
+}
+
+#itemread textarea, #itemmodify textarea, #itemregister textarea {
+	width: 370px;
+	height: 200px;
+	float: right;
+}
+
+#itemread textarea:focus, 
+#itemmodify textarea:focus, 
+#itemregister textarea:focus
+{
+	outline: 2px solid #0F4C81;
+}
+
+input[type="file"] {
+	float: center;
+}
+
+
+

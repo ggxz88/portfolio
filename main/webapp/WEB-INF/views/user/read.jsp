@@ -3,7 +3,7 @@
 
 <h2><spring:message code="user.header.read" /></h2>
 
-<form action="/user/read">
+<form id="userread" action="/user/read">
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -28,9 +28,10 @@
 	</div>
 	
 	<div>
-		<a href="modify?userId=${member.userId}"><input type="button" value="<spring:message code="action.edit" />"></a>
-		<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/user/remove'; method='post'; " />
-		<a href="list"><input type="button" value="<spring:message code="action.list" />"></a>
+		<a id="modifybtn" href="modify?userId=${member.userId}"><input type="button" value="<spring:message code="action.edit" />"></a>
+		<span id="removebtn"><input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/user/remove'; method='post'; " /></span>
+		<a id="listbtn" href="list"><input type="button" value="<spring:message code="action.list" />"></a>
 	</div>
+	<br/><br/>
 	
 </form>

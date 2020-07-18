@@ -4,7 +4,7 @@
 
 <h2><spring:message code="notice.header.read" /></h2>
 
-<form action="/notice/read">
+<form id="read" action="/notice/read">
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<input type="hidden" name="noticeNo" value="${notice.noticeNo}" />

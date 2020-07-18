@@ -5,7 +5,7 @@
 
 <h2><spring:message code="board.header.read" /></h2>
 
-<form action="/board/read">
+<form id="read" action="/board/read">
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<input type="hidden" name="boardNo" value="${board.boardNo}" />

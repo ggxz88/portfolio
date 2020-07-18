@@ -3,12 +3,11 @@
 
 <h2><spring:message code="user.header.modify" /></h2>
 
-<form action="/user/modify" method="post">
+<form id="usermodify" action="/user/modify" method="post">
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 	<div class="input_area">
-		<!--<spring:message code="user.userId" /> -->
 		<label for="userId"><spring:message code="user.userId" /></label>
 		<input type="text" id="userId" name="userId" value="${member.userId}" required="required" readonly />
 	</div>
@@ -29,8 +28,8 @@
 	</div>
 
 	<div>
-		<button type="submit" id="modify" name="modify"><spring:message code="action.modify" /></button>
-		<a href="list"><input type="button" value="<spring:message code="action.list" />"></a>
+		<span id="modifybtn"><button type="submit" name="modify"><spring:message code="action.modify" /></button></span>
+		<a id="listbtn2" href="list"><input type="button" value="<spring:message code="action.list" />"></a>
 	</div>
 	
 </form>

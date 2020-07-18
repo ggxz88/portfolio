@@ -27,10 +27,11 @@
 			<td></td>
 			<td><input type="checkbox" name="remember-me"><spring:message code="auth.rememberMe" /></td>
 		</tr>
-		<tr>
-			<td colspan="2" align="center"><button><spring:message code="action.login" /></button></td>
-		</tr>
+		
 	</table>
-
+	<div>
+		<button><spring:message code="action.login" /></button>
+	</div>
+		
 	<sec:csrfInput />
 </form>

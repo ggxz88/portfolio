@@ -3,7 +3,7 @@
 
 <h2><spring:message code="item.header.register" /></h2>
 
-<form action="/item/register" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+<form id="itemregister" action="/item/register" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	

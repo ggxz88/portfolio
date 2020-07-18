@@ -5,7 +5,7 @@
 
 <h2><spring:message code="notice.header.modify" /></h2>
 
-<form action="/notice/modify" method="post">
+<form id="modify" action="/notice/modify" method="post">
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<input type="hidden" name="noticeNo" value="${notice.noticeNo}" />
@@ -26,7 +26,7 @@
 	
 	<div>
 		<sec:authorize access="hasRole('ROLE_ADMIN')">
-			<button type="submit" id="modify" name="modify"><spring:message code="action.modify" /></button>
+			<button type="submit" id="modifybtn" name="modify"><spring:message code="action.modify" /></button>
 			<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/notice/remove';"/>
 		</sec:authorize>
 			

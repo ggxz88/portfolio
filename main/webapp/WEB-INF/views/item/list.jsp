@@ -11,11 +11,7 @@
 	<button id='searchBtn'><spring:message code="action.search" /></button>
 </form:form>
 
-<sec:authorize access="hasRole('ROLE_ADMIN')">
-	<a href="register"><spring:message code="action.new" /></a>
-</sec:authorize>
-
-<table border="1">
+<table id="list" border="1">
 	<tr>
 		<th align="center" width="80"><spring:message code="item.itemId" /></th>
 		<th align="center" width="320"><spring:message code="item.itemName" /></th>
@@ -72,6 +68,12 @@
 		</c:otherwise>			
 	</c:choose>
 </table>
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+	<div id="newmake" align="right">
+		<a href="register"><spring:message code="action.new" /></a>
+	</div>
+</sec:authorize>
 
 <!-- 페이징 네비게이션 -->
 <div>

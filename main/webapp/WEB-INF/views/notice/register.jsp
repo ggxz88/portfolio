@@ -19,6 +19,6 @@
 	</div>
 	
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<button type="submit" id="register" name="register"><spring:message code="action.register" /></button>
+		<button type="submit" id="registerbtn" name="register"><spring:message code="action.register" /></button>
 	</sec:authorize>
 </form>

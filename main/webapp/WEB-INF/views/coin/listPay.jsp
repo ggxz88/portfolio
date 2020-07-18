@@ -5,7 +5,7 @@
 
 <h2><spring:message code="coin.header.listPay" /></h2>
 
-<table border="1">
+<table id="list" border="1">
 	<tr>
 		<th align="center" width="80"><spring:message code="coin.no" /></th>
 		<th align="center" width="120"><spring:message code="coin.itemName" /></th>
