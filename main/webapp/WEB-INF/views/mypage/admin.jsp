@@ -20,17 +20,21 @@
 		    </td>
 		</tr>
 	</table>    
-	<br><br>
+	<br><br><hr><br>    
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<div align="left">
-			<a href="/user/list"><spring:message code="menu.user.admin" /></a>
-			<br><br>
-			<a href="/board/list"><spring:message code="menu.board.admin" /></a>
-			<br><br>
-			<a href="/notice/list"><spring:message code="menu.notice.admin" /></a>
-			<br><br>
-			<a href="/item/list"><spring:message code="menu.item.admin" /></a>
-			<br>
+		<div class="mypage" align="left">
+			<div class="mybtn">
+				<a href="/user/list"><br><br><spring:message code="menu.user.admin" /></a>
+			</div>
+			<div class="mybtn">
+				<a href="/board/list"><br><br><spring:message code="menu.board.admin" /></a>
+			</div>
+			<div class="mybtn">
+				<a href="/notice/list"><br><br><spring:message code="menu.notice.admin" /></a>
+			</div>
+			<div class="mybtn">
+				<a href="/item/list"><br><br><spring:message code="menu.item.admin" /></a>
+			</div>
 		</div>
 	</sec:authorize>
 	            	        

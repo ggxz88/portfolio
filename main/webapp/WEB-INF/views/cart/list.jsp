@@ -4,10 +4,6 @@
 
 <h2><spring:message code="cart.header.list" /></h2>
 
-<div id="removeall">
-	<a href="/cart/removeall?userId=${cart.userId}"><spring:message code="cart.removeall" /></a>
-</div>
-
 <table id="list" border="1">
 	<tr>
 		<th align="center" width="420"><spring:message code="cart.info" /></th>
@@ -49,5 +45,9 @@
 
 <div class="priceall_area" align="right">
 	총 금액 : ${priceall}원
+</div>
+
+<div id="removeall">
+	<a href="/cart/removeall?userId=${cart.userId}"><spring:message code="cart.removeall" /></a>
 </div>
 

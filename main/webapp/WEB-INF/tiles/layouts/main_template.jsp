@@ -21,6 +21,7 @@
 	<div align="center">
 		<tiles:insertAttribute name="content" />
 	</div>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 	
 	<tiles:insertAttribute name="footer" />
 

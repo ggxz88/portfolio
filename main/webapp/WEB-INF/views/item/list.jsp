@@ -56,12 +56,12 @@
 					<td align="center">${item.price} 원</td>
 					
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<td align="center"><a href='/item/modify${pgrq.toUriString(pgrq.page)}&itemId=${item.itemId}'><spring:message code="item.edit" /></a></td>
-						<td align="center"><a href='/item/remove${pgrq.toUriString(pgrq.page)}&itemId=${item.itemId}'><spring:message code="item.remove" /></a></td>
+						<td id="a_btn" align="center"><a href='/item/modify${pgrq.toUriString(pgrq.page)}&itemId=${item.itemId}'><spring:message code="item.edit" /></a></td>
+						<td id="a_btn" align="center"><a href='/item/remove${pgrq.toUriString(pgrq.page)}&itemId=${item.itemId}'><spring:message code="item.remove" /></a></td>
 					</sec:authorize>
 					
 					<sec:authorize access="hasRole('ROLE_MEMBER')">
-						<td align="center"><a href='/item/read${pgrq.toUriString(pgrq.page)}&itemId=${item.itemId}'><spring:message code="item.read" /></a></td>
+						<td id="a_btn" align="center"><a href='/item/read${pgrq.toUriString(pgrq.page)}&itemId=${item.itemId}'><spring:message code="item.read" /></a></td>
 					</sec:authorize>
 				</tr>	
 			</c:forEach>

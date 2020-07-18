@@ -23,26 +23,31 @@
 			</td>
 		</tr>
 	</table>
-	<br><br>    
+	<br><br><hr><br>    
 	<sec:authorize access="hasRole('ROLE_MEMBER')">
-		<div align="left">
-			<a href="/useritem/list"><spring:message code="menu.useritem.list" /></a>
-			<br><br>
-			<a href="/cart/list"><spring:message code="menu.cart.list" /></a>
-			<br><br>
-			<a href="/board/list"><spring:message code="menu.board.member" /></a>
-			<br><br>
-			<a href="/notice/list"><spring:message code="menu.notice.member" /></a>
-			<br>
-			<hr>
-			<a href="/coin/charge"><spring:message code="menu.coin.charge" /></a>
-			<br><br>
-			<a href="/coin/listPay"><spring:message code="menu.coin.listPay" /></a>
-			<br><br>
-			<a href="/coin/list"><spring:message code="menu.coin.list" /></a>
-			<br>
+		<div class="mypage" align="left">
+			<div class="mybtn">
+				<a href="/useritem/list"><br><br><spring:message code="menu.useritem.list" /></a>
+			</div>
+			<div class="mybtn">
+				<a href="/cart/list"><br><br><spring:message code="menu.cart.list" /></a>
+			</div>
+			<div class="mybtn">
+				<a href="/board/list"><br><br><spring:message code="menu.board.member" /></a>
+			</div>
+			<div class="mybtn">
+				<a href="/notice/list"><br><br><spring:message code="menu.notice.member" /></a>
+			</div>
+			<div class="mybtn">
+				<a href="/coin/charge"><br><br><spring:message code="menu.coin.charge" /></a>
+			</div>
+			<div class="mybtn">
+				<a href="/coin/listPay"><br><br><spring:message code="menu.coin.listPay" /></a>
+			</div>
+			<div class="mybtn">
+				<a href="/coin/list"><br><br><spring:message code="menu.coin.list" /></a>
+			</div>
 		</div>
-		
 	</sec:authorize>	        	        
 </sec:authorize>
 	
