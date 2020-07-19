@@ -17,6 +17,8 @@ public class UserItem implements Serializable {
 	private String pictureUrl;
 	
 	private Date regDate;
+	
+	private int row_num;
 
 	public int getUserItemNo() {
 		return userItemNo;
@@ -80,6 +82,14 @@ public class UserItem implements Serializable {
 
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
+	}
+
+	public int getRow_num() {
+		return row_num;
+	}
+
+	public void setRow_num(int row_num) {
+		this.row_num = row_num;
 	}
 	
 	

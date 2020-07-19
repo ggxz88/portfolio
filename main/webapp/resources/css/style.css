@@ -320,7 +320,7 @@ a:hover {
 	outline: 2px solid #0F4C81;
 }
 
-#itemread, #itemmodify, #itemregister {
+#itemread, #itemmodify, #itemregister, #itemremove {
 	width: 460px;
 	margin: 5px;
 	border : 1px solid gray;
@@ -330,23 +330,25 @@ a:hover {
 
 #itemread input[type="text"], #itemread label, #itemread textarea, 
 #itemmodify input[type="text"], #itemmodify label, #itemmodify textarea,
-#itemregister input[type="text"], #itemregister label, #itemregister textarea  
+#itemregister input[type="text"], #itemregister label, #itemregister textarea,  
+#itemremove input[type="text"], #itemremove label, #itemremove textarea  
 {
 	display: block;
 }
 
-#itemread label, #itemmodify label, #itemregister label { 
+#itemread label, #itemmodify label, #itemregister label, #itemremove label { 
 	float : left;
 }
 
 #itemread input[type="text"], 
 #itemmodify input[type="text"],
-#itemregister input[type="text"] {
+#itemregister input[type="text"],
+#itemremove input[type="text"] {
 	width: 370px;
 	float: right;
 }
 
-#itemread textarea, #itemmodify textarea, #itemregister textarea {
+#itemread textarea, #itemmodify textarea, #itemregister textarea, #itemremove textarea {
 	width: 370px;
 	height: 200px;
 	float: right;
@@ -354,7 +356,8 @@ a:hover {
 
 #itemread textarea:focus, 
 #itemmodify textarea:focus, 
-#itemregister textarea:focus
+#itemregister textarea:focus,
+#itemremove textarea:focus
 {
 	outline: 2px solid #0F4C81;
 }
@@ -400,7 +403,7 @@ input[type="file"] {
 
 .linkbtn a{
 	display: inline-block;
-	width: 85px;
+	width: 90px;
 	height: 25px;
   	border:2px solid #0F4C81;
   	text-align: center;
@@ -426,6 +429,39 @@ input[type="file"] {
 }
 
 .linkbtn a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.linkbtn2 a{
+	display: inline-block;
+	margin: 5px;
+	width: 140px;
+	height: 25px;
+  	border:2px solid #0F4C81;
+  	text-align: center;
+  	background-color : #0F4C81;
+  	font-family: 'NanumGothicRegular';
+  	text-decoration: none;
+  	color: white;
+}
+
+.linkbtn2 a:link {
+	text-decoration: none;
+	color: white;
+}
+
+.linkbtn2 a:active {
+	text-decoration: none;
+	color: white;
+}
+
+.linkbtn2 a:visited {
+	text-decoration: none;
+	color: white;
+}
+
+.linkbtn2 a:hover {
 	text-decoration: none;
 	color: white;
 }

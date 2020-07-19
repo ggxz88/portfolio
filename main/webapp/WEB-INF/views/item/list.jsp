@@ -70,7 +70,7 @@
 </table>
 
 <sec:authorize access="hasRole('ROLE_ADMIN')">
-	<div id="newmake" align="right">
+	<div id="newmake" align="center">
 		<a href="register"><spring:message code="action.new" /></a>
 	</div>
 </sec:authorize>

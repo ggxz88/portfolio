@@ -33,6 +33,9 @@
 				<a href="/cart/list"><br><br><spring:message code="menu.cart.list" /></a>
 			</div>
 			<div class="mybtn">
+				<a href="/useritem/rank"><br><br><spring:message code="menu.item.rank" /></a>
+			</div>
+			<div class="mybtn">
 				<a href="/board/list"><br><br><spring:message code="menu.board.member" /></a>
 			</div>
 			<div class="mybtn">

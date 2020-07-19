@@ -28,12 +28,12 @@
 	
 	<div class="input_area">
 		<label for="description"><spring:message code="item.itemDescription" /></label>
-		<input type="text" id="description" name="description" value="${item.description}" required="required" disabled />
+		<textarea id="description" name="description" disabled >${item.description}</textarea>
 	</div>
 	
 	<div>
 		<button type="submit" id="remove" name="remove"><spring:message code="action.remove" /></button>
-		<a href="/item/list${pgrq.toUriString()}"><input type="button" value="<spring:message code="action.list" />"></a>
+		<a href="/item/list${pgrq.toItemUriString()}"><input type="button" value="<spring:message code="action.list" />"></a>
 			
 	</div>
 	

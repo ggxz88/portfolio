@@ -5,4 +5,4 @@
 <h2><spring:message code="common.error.accessDeniedPage" /></h2>
 
 <span class="linkbtn"><a href="javascript:window.history.back();"><spring:message code="common.error.backPage" /></a><br></span>
-<span class="linkbtn"><a href="/"><spring:message code="common.error.returnHome" /></a></span>
+<span class="linkbtn2"><a href="/"><spring:message code="common.error.returnHome" /></a></span>

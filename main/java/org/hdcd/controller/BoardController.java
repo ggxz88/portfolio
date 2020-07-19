@@ -9,7 +9,9 @@ import org.hdcd.common.domain.Pagination;
 import org.hdcd.common.security.domain.CustomUser;
 import org.hdcd.domain.Board;
 import org.hdcd.domain.Member;
+import org.hdcd.domain.Reply;
 import org.hdcd.service.BoardService;
+import org.hdcd.service.ReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -25,10 +27,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class BoardController {
 	
 	private final BoardService service;
+	private final ReplyService replyService;
 	
 	@Autowired
-	public BoardController(BoardService service) {
+	public BoardController(BoardService service, ReplyService replyService) {
 		this.service = service;
+		this.replyService = replyService;
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -88,6 +92,13 @@ public class BoardController {
 		Board board = service.read(boardNo);
 				
 		model.addAttribute(board);
+		
+		//댓글
+		List<Reply> replyList = replyService.list(boardNo);
+		
+		model.addAttribute("replyList", replyList);
+		
+		model.addAttribute("reply", new Reply());
 	}
 	
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
@@ -135,4 +146,83 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
+	//댓글
+	
+	@RequestMapping(value = "/replyregister", method = RequestMethod.POST)
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	public String replyregister(Reply reply, int boardNo, Model model, Authentication authentication, RedirectAttributes rttr) throws Exception {
+		replyService.register(reply);
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/board/list";
+	}
+	
+	/*
+	@RequestMapping(value = "/replyregister", method = {RequestMethod.POST, RequestMethod.GET})
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	public String register(Authentication authentication, Model model, RedirectAttributes rttr) throws Exception {
+		CustomUser customUser = (CustomUser)authentication.getPrincipal();
+		Member member = customUser.getMember();
+		
+		Reply reply = new Reply();
+		
+		reply.setWriter(member.getUserId());
+		
+		replyService.register(reply);
+		
+		model.addAttribute(reply);
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/board/read";
+	}
+	*/
+	
+	/*
+	@RequestMapping(value = "/replymodify", method = RequestMethod.GET)
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
+	public void modifyForm(int boardNo, Model model) throws Exception {
+		//조회한 게시글 상세정보를 뷰에 전달
+		Board board = service.read(boardNo);
+								
+		model.addAttribute(board);
+	}
+	
+	@RequestMapping(value = "/replymodify", method = RequestMethod.POST)
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
+	public String modify(Board board, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
+		service.modify(board);
+		
+		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
+		rttr.addAttribute("page", pageRequest.getPage());
+		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
+		
+		//검색 유형과 검색어를 뷰에 전달
+		rttr.addAttribute("searchType", pageRequest.getSearchType());
+		rttr.addAttribute("keyword", pageRequest.getKeyword());
+				
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/board/list";
+	}
+	
+	@RequestMapping(value = "/replyremove", method = RequestMethod.POST)
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
+	public String remove(int boardNo, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
+		service.remove(boardNo);
+		
+		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
+		rttr.addAttribute("page", pageRequest.getPage());
+		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
+		
+		//검색 유형과 검색어를 뷰에 전달
+		rttr.addAttribute("searchType", pageRequest.getSearchType());
+		rttr.addAttribute("keyword", pageRequest.getKeyword());
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/board/list";
+	}
+	*/
 }

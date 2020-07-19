@@ -43,8 +43,9 @@
 	</c:choose>
 </table>
 
-<div class="priceall_area" align="right">
+<div class="priceall_area" align="center">
 	총 금액 : ${priceall}원
+	<br>
 </div>
 
 <div id="removeall">

@@ -33,7 +33,7 @@
 		<sec:authentication property="principal" var="pinfo" />
 	
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<button type="submit" id="modify" name="modify"><spring:message code="action.modify" /></button>
+				<button type="submit" id="modifybtn" name="modify"><spring:message code="action.modify" /></button>
 				<input type="submit" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/remove';"/>
 			</sec:authorize>
 			

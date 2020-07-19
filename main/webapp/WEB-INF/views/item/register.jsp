@@ -33,7 +33,7 @@
 	</div>
 	
 	<div>
-		<button type="submit" id="register" name="register"><spring:message code="action.register" /></button>
+		<button type="submit" id="registerbtn" name="register"><spring:message code="action.register" /></button>
 		<a href="/item/list"><input type="button" value="<spring:message code="action.list" />"></a>
 			
 	</div>

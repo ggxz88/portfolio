@@ -66,13 +66,13 @@
 	
 	<!-- 랭킹 -->
 	<select id="rank" resultType="org.hdcd.domain.UserItem">
-		SELECT a.itemId,
+		SELECT row_number() OVER (ORDER BY COUNT(a.itemId) DESC) row_num,
+			a.itemId,
 			b.itemName,
-			b.price, 
-			COUNT(*) AS cnt 
+			b.price,
+			COUNT(a.itemId) as cnt 
 		  FROM user_item a INNER JOIN item b ON a.itemId = b.itemId 
 		GROUP BY a.itemId 
-		ORDER BY cnt DESC 
 		LIMIT 10;
 	</select>
 	

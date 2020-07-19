@@ -125,5 +125,16 @@ CREATE TABLE cart (
 	PRIMARY KEY (cartNo, userId)
 );
 
-ALTER TABLE cart ADD CONSTRAINT fk_cart_itemId FOREIGN KEY (itemId) REFERENCES item(itemId);
-ALTER TABLE cart ADD CONSTRAINT fk_cart_userId FOREIGN KEY (userId) REFERENCES member(userId);
+ALTER TABLE cart ADD CONSTRAINT fk_cart_itemId FOREIGN KEY (itemId) REFERENCES item(itemId) ON DELETE CASCADE;
+ALTER TABLE cart ADD CONSTRAINT fk_cart_userId FOREIGN KEY (userId) REFERENCES member(userId) ON DELETE CASCADE;
+
+CREATE TABLE reply (
+	replyNo INT(5) NOT NULL AUTO_INCREMENT,
+    boardNo INT NOT NULL,
+	content VARCHAR(150) NOT NULL,
+	writer VARCHAR(50) NOT NULL,
+	regDate TIMESTAMP DEFAULT now(),
+	PRIMARY KEY (replyNo, boardNo)
+);
+
+ALTER TABLE reply ADD CONSTRAINT fk_reply_boardNo FOREIGN KEY (boardNo) REFERENCES board(boardNo) ON DELETE CASCADE;
