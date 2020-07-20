@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <h2><spring:message code="item.header.read" /></h2>
 
@@ -36,6 +39,51 @@
 		<input type="submit" value="<spring:message code="action.cartadd" />" onclick="javascript: action='/item/cartadd'; method='post'; "/>
 		<a href="/item/list${pgrq.toItemUriString()}"><input type="button" value="<spring:message code="action.list" />"></a>
 			
+	</div>
+	
+	<h3 align="left">후기</h3>
+	<div align="left">
+		<c:choose>
+			<c:when test="${empty reviewList}">
+				<div>
+					<spring:message code="common.listEmpty" />
+				</div>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${reviewList}" var="reviewList">
+					<div>
+						${reviewList.reviewNo}
+						작성자 : ${reviewList.reviewWriter}
+						작성 일자 : <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${reviewList.regDate}" />	
+					</div>	
+					<div>
+						${reviewList.reviewContent}
+						<sec:authentication property="principal" var="pinfo" />
+						
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<input type="submit" id="reviewremove" value="<spring:message code="action.remove" />" onclick="javascript: action='/item/reviewremove'; method='post'; "/>
+						</sec:authorize>
+						
+						<sec:authorize access="hasRole('ROLE_MEMBER')">
+							<c:if test="${pinfo.username eq reviewList.reviewWriter}">
+								<input type="submit" id="reviewremove" value="<spring:message code="action.remove" />" onclick="javascript: action='/item/reviewremove'; method='post';"/>
+							</c:if>
+						</sec:authorize>
+					</div>
+					<br>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</div>
+	
+	<div>
+		<div class="input_area">
+			<label for="reviewContent"><spring:message code="review.content" /></label>
+			<input type="text" id="reviewContent" name="reviewContent" />
+		</div>
+		
+		<input type="submit" id="reviewregister" value="<spring:message code="action.register" />" onclick="javascript: action='/item/reviewregister'; method='post';" />
+		
 	</div>
 	
 </form>

@@ -60,11 +60,23 @@
 			<c:otherwise>
 				<c:forEach items="${replyList}" var="replylist">
 					<div>
+						${replylist.replyNo}
 						작성자 : ${replylist.replyWriter}
 						작성 일자 : <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${replylist.regDate}" />	
 					</div>	
 					<div>
 						${replylist.replyContent}
+						<sec:authentication property="principal" var="pinfo" />
+						
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<input type="submit" id="replyremove" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/replyremove'; method='post'; "/>
+						</sec:authorize>
+						
+						<sec:authorize access="hasRole('ROLE_MEMBER')">
+							<c:if test="${pinfo.username eq replylist.replyWriter}">
+								<input type="submit" id="replyremove" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/replyremove'; method='post';"/>
+							</c:if>
+						</sec:authorize>
 					</div>
 					<br>
 				</c:forEach>
@@ -74,18 +86,14 @@
 	
 	<div>
 		<div class="input_area">
-			<label for="replyWriter"><spring:message code="reply.writer" /></label>
-			<input type="text" id="replyWriter" name="replyWriter" required="required" />
-		</div>
-		
-		<div class="input_area">
 			<label for="replyContent"><spring:message code="reply.content" /></label>
-			<input type="text" id="replyContent" name="replyContent" required="required" />
+			<input type="text" id="replyContent" name="replyContent" />
 		</div>
 		
-		<input type="submit" value="<spring:message code="action.register" />" onclick="javascript: action='/board/replyregister'; method='post'; location.reload(); " />
+		<input type="submit" id="replyregister" value="<spring:message code="action.register" />" onclick="javascript: action='/board/replyregister'; method='post';" />
 		
 	</div>
-
 </form>
+
+
 

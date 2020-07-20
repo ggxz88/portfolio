@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -149,35 +150,46 @@ public class BoardController {
 	//댓글
 	
 	@RequestMapping(value = "/replyregister", method = RequestMethod.POST)
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
-	public String replyregister(Reply reply, int boardNo, Model model, Authentication authentication, RedirectAttributes rttr) throws Exception {
-		replyService.register(reply);
-		
-		rttr.addFlashAttribute("msg", "SUCCESS");
-		
-		return "redirect:/board/list";
-	}
-	
-	/*
-	@RequestMapping(value = "/replyregister", method = {RequestMethod.POST, RequestMethod.GET})
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
-	public String register(Authentication authentication, Model model, RedirectAttributes rttr) throws Exception {
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
+	public String replyregister(Reply reply, int boardNo, PageRequest pageRequest, Model model, Authentication authentication, RedirectAttributes rttr) throws Exception {
 		CustomUser customUser = (CustomUser)authentication.getPrincipal();
 		Member member = customUser.getMember();
-		
-		Reply reply = new Reply();
-		
-		reply.setWriter(member.getUserId());
+		reply.setReplyWriter(member.getUserId());
 		
 		replyService.register(reply);
 		
-		model.addAttribute(reply);
+		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
+		rttr.addAttribute("page", pageRequest.getPage());
+		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
+				
+		//검색 유형과 검색어를 뷰에 전달
+		rttr.addAttribute("searchType", pageRequest.getSearchType());
+		rttr.addAttribute("keyword", pageRequest.getKeyword());
+		rttr.addAttribute("boardNo", boardNo);
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
 		return "redirect:/board/read";
 	}
-	*/
+	
+	@RequestMapping(value = "/replyremove", method = {RequestMethod.POST, RequestMethod.GET})
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
+	public String replyremove(Reply reply, int boardNo, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
+		replyService.remove(reply.getReplyNo()); //v
+		
+		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
+		rttr.addAttribute("page", pageRequest.getPage());
+		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
+		
+		//검색 유형과 검색어를 뷰에 전달
+		rttr.addAttribute("searchType", pageRequest.getSearchType());
+		rttr.addAttribute("keyword", pageRequest.getKeyword());
+		rttr.addAttribute("boardNo", boardNo);
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/board/read";
+	}
 	
 	/*
 	@RequestMapping(value = "/replymodify", method = RequestMethod.GET)
@@ -206,23 +218,7 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
-	
-	@RequestMapping(value = "/replyremove", method = RequestMethod.POST)
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
-	public String remove(int boardNo, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
-		service.remove(boardNo);
-		
-		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
-		rttr.addAttribute("page", pageRequest.getPage());
-		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
-		
-		//검색 유형과 검색어를 뷰에 전달
-		rttr.addAttribute("searchType", pageRequest.getSearchType());
-		rttr.addAttribute("keyword", pageRequest.getKeyword());
-		
-		rttr.addFlashAttribute("msg", "SUCCESS");
-		
-		return "redirect:/board/list";
-	}
 	*/
+	
+	
 }

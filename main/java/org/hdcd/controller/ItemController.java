@@ -15,9 +15,12 @@ import org.hdcd.common.domain.Pagination;
 import org.hdcd.common.security.domain.CustomUser;
 import org.hdcd.domain.Item;
 import org.hdcd.domain.Member;
+import org.hdcd.domain.Reply;
+import org.hdcd.domain.Review;
 import org.hdcd.service.CartService;
 import org.hdcd.service.ItemService;
 import org.hdcd.service.MemberService;
+import org.hdcd.service.ReviewService;
 import org.hdcd.service.UserItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -45,14 +48,16 @@ public class ItemController {
 	private final MemberService memberService;
 	private final UserItemService userItemService;
 	private final CartService cartService;
+	private final ReviewService reviewService;
 	private final MessageSource messageSource;
 	
 	@Autowired
-	public ItemController(ItemService service, MemberService memberService, UserItemService userItemService, CartService cartService, MessageSource messageSource) {
+	public ItemController(ItemService service, MemberService memberService, UserItemService userItemService, CartService cartService, ReviewService reviewService, MessageSource messageSource) {
 		this.service = service;
 		this.memberService = memberService;
 		this.userItemService = userItemService;
 		this.cartService = cartService;
+		this.reviewService = reviewService;
 		this.messageSource = messageSource;
 	}
 	
@@ -110,6 +115,12 @@ public class ItemController {
 		Item item = service.read(itemId);
 		
 		model.addAttribute(item);
+		
+		List<Review> reviewList = reviewService.list(itemId);
+		
+		model.addAttribute("reviewList", reviewList);
+		
+		model.addAttribute("review", new Review());
 		
 		return "item/read";
 	}
@@ -326,5 +337,27 @@ public class ItemController {
 	@RequestMapping(value = "/cartaddsuccess", method = RequestMethod.GET)
 	public String cartaddsuccess() throws Exception {
 		return "item/cartaddsuccess";
+	}
+	
+	@RequestMapping(value = "/reviewregister", method = RequestMethod.POST)
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
+	public String replyregister(Review review, int itemId, PageRequest pageRequest, Model model, Authentication authentication, RedirectAttributes rttr) throws Exception {
+		CustomUser customUser = (CustomUser)authentication.getPrincipal();
+		Member member = customUser.getMember();
+		review.setReviewWriter(member.getUserId());
+		
+		reviewService.register(review);
+		
+		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
+		rttr.addAttribute("page", pageRequest.getPage());
+		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
+				
+		//검색 유형과 검색어를 뷰에 전달
+		rttr.addAttribute("keyword", pageRequest.getKeyword());
+		rttr.addAttribute("itemId", itemId);
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/item/read";
 	}
 }
