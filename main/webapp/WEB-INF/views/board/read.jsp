@@ -69,14 +69,22 @@
 						<sec:authentication property="principal" var="pinfo" />
 						
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
-							<input type="submit" id="replyremove" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/replyremove'; method='post'; "/>
+							<!-- <input type="submit" id="replyremove" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/replyremove'; method='post'; "/> -->
+							<button type="button" class="replyremove" data-rno="${replylist.replyNo}"><spring:message code="action.remove" /></button>
 						</sec:authorize>
 						
 						<sec:authorize access="hasRole('ROLE_MEMBER')">
 							<c:if test="${pinfo.username eq replylist.replyWriter}">
-								<input type="submit" id="replyremove" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/replyremove'; method='post';"/>
+								<button type="button" class="replyremove" data-rno="${replylist.replyNo}"><spring:message code="action.remove" /></button>
 							</c:if>
 						</sec:authorize>
+						
+						<script>
+							$(".replyremove").click(function(){
+							   self.location = "/board/replyremove${pgrq.toUriString()}&boardNo=${board.boardNo}"
+							    + "&replyNo=" + $(this).attr("data-rno");        
+							  });
+						</script>
 					</div>
 					<br>
 				</c:forEach>

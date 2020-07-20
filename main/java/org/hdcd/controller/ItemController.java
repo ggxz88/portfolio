@@ -22,6 +22,8 @@ import org.hdcd.service.ItemService;
 import org.hdcd.service.MemberService;
 import org.hdcd.service.ReviewService;
 import org.hdcd.service.UserItemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
@@ -36,6 +38,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -43,6 +46,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/item")
 public class ItemController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
 	
 	private final ItemService service;
 	private final MemberService memberService;
@@ -360,4 +365,26 @@ public class ItemController {
 		
 		return "redirect:/item/read";
 	}
+	
+	@RequestMapping(value = "/reviewremove", method = {RequestMethod.GET, RequestMethod.POST})
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
+	public String replyremove(Review review, @RequestParam int reviewNo, int itemId, PageRequest pageRequest, Authentication authentication, RedirectAttributes rttr) throws Exception {
+		logger.info("review delete");
+		
+		reviewService.remove(reviewNo); //v
+		
+		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
+		rttr.addAttribute("page", pageRequest.getPage());
+		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
+		
+		//검색 유형과 검색어를 뷰에 전달
+		rttr.addAttribute("keyword", pageRequest.getKeyword());
+		rttr.addAttribute("itemId", itemId);
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/item/read";
+	}
+	
+	
 }

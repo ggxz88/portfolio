@@ -52,7 +52,6 @@
 			<c:otherwise>
 				<c:forEach items="${reviewList}" var="reviewList">
 					<div>
-						${reviewList.reviewNo}
 						작성자 : ${reviewList.reviewWriter}
 						작성 일자 : <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${reviewList.regDate}" />	
 					</div>	
@@ -61,14 +60,21 @@
 						<sec:authentication property="principal" var="pinfo" />
 						
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
-							<input type="submit" id="reviewremove" value="<spring:message code="action.remove" />" onclick="javascript: action='/item/reviewremove'; method='post'; "/>
+							<button type="button" class="reviewremove" data-rno="${reviewList.reviewNo}"><spring:message code="action.remove" /></button>
 						</sec:authorize>
 						
 						<sec:authorize access="hasRole('ROLE_MEMBER')">
 							<c:if test="${pinfo.username eq reviewList.reviewWriter}">
-								<input type="submit" id="reviewremove" value="<spring:message code="action.remove" />" onclick="javascript: action='/item/reviewremove'; method='post';"/>
+								<button type="button" class="reviewremove" data-rno="${reviewList.reviewNo}"><spring:message code="action.remove" /></button>
 							</c:if>
 						</sec:authorize>
+						
+						<script>
+							$(".reviewremove").click(function(){
+							   self.location = "/item/reviewremove${pgrq.toItemUriString()}&itemId=${item.itemId}"
+							    + "&reviewNo=" + $(this).attr("data-rno");        
+							  });
+						</script>
 					</div>
 					<br>
 				</c:forEach>

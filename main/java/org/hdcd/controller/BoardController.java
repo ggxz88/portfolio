@@ -12,6 +12,8 @@ import org.hdcd.domain.Member;
 import org.hdcd.domain.Reply;
 import org.hdcd.service.BoardService;
 import org.hdcd.service.ReplyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -26,6 +28,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	private final BoardService service;
 	private final ReplyService replyService;
@@ -172,10 +176,12 @@ public class BoardController {
 		return "redirect:/board/read";
 	}
 	
-	@RequestMapping(value = "/replyremove", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/replyremove", method = {RequestMethod.GET, RequestMethod.POST})
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
-	public String replyremove(Reply reply, int boardNo, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
-		replyService.remove(reply.getReplyNo()); //v
+	public String replyremove(Reply reply, @RequestParam int replyNo, int boardNo, PageRequest pageRequest, Authentication authentication, RedirectAttributes rttr) throws Exception {
+		logger.info("reply delete");
+		
+		replyService.remove(replyNo); //v
 		
 		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
 		rttr.addAttribute("page", pageRequest.getPage());
