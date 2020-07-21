@@ -14,4 +14,6 @@ public interface ReplyMapper {
 	
 	public List<Reply> list(Integer boardNo) throws Exception;
 	
+	public Reply read(Integer replyNo) throws Exception;
+	
 }

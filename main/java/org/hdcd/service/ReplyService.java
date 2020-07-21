@@ -14,4 +14,6 @@ public interface ReplyService {
 	
 	public void remove(int replyNo) throws Exception;
 	
+	public Reply read(int replyNo) throws Exception;
+	
 }

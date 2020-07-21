@@ -39,4 +39,9 @@ public class ReplyServiceImpl implements ReplyService {
 	public void remove(int replyNo) throws Exception {
 		mapper.delete(replyNo);
 	}
+	
+	@Override
+	public Reply read(int replyNo) throws Exception {
+		return mapper.read(replyNo);
+	}
 }

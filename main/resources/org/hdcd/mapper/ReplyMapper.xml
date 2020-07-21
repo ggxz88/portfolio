@@ -28,10 +28,21 @@
 		 WHERE boardNo = #{boardNo}
 	</select>
 	
+	<select id="read" resultType="org.hdcd.domain.Reply">
+		SELECT replyNo,
+			boardNo,
+			replyWriter,
+			replyContent,
+			regDate
+		  FROM reply
+		 WHERE replyNo = #{replyNo}
+	</select>
+	
 	<update id="update">
 		UPDATE reply
 		   SET replyContent = #{replyContent}
 		 WHERE replyNo = #{replyNo}
+		 AND boardNo = #{boardNo}
 	</update>
 	
 	<delete id="delete">

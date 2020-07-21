@@ -28,6 +28,16 @@
 		 WHERE itemId = #{itemId}
 	</select>
 	
+	<select id="read" resultType="org.hdcd.domain.Review">
+		SELECT reviewNo,
+			itemId,
+			reviewWriter,
+			reviewContent,
+			regDate
+		  FROM review
+		 WHERE reviewNo = #{reviewNo}
+	</select>
+	
 	<update id="update">
 		UPDATE review
 		   SET reviewContent = #{reviewContent}

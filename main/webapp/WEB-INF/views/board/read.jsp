@@ -71,11 +71,13 @@
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
 							<!-- <input type="submit" id="replyremove" value="<spring:message code="action.remove" />" onclick="javascript: action='/board/replyremove'; method='post'; "/> -->
 							<button type="button" class="replyremove" data-rno="${replylist.replyNo}"><spring:message code="action.remove" /></button>
+							<button type="button" class="replymodify" data-rno="${replylist.replyNo}"><spring:message code="action.modify" /></button>
 						</sec:authorize>
 						
 						<sec:authorize access="hasRole('ROLE_MEMBER')">
 							<c:if test="${pinfo.username eq replylist.replyWriter}">
 								<button type="button" class="replyremove" data-rno="${replylist.replyNo}"><spring:message code="action.remove" /></button>
+								<button type="button" class="replymodify" data-rno="${replylist.replyNo}"><spring:message code="action.modify" /></button>
 							</c:if>
 						</sec:authorize>
 						
@@ -83,7 +85,12 @@
 							$(".replyremove").click(function(){
 							   self.location = "/board/replyremove${pgrq.toUriString()}&boardNo=${board.boardNo}"
 							    + "&replyNo=" + $(this).attr("data-rno");        
-							  });
+							});
+							
+							$(".replymodify").click(function(){
+								self.location = "/board/replymodify${pgrq.toUriString()}"
+								+ "&replyNo=" + $(this).attr("data-rno");        
+							});
 						</script>
 					</div>
 					<br>

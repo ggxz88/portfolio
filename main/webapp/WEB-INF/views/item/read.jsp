@@ -61,11 +61,13 @@
 						
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
 							<button type="button" class="reviewremove" data-rno="${reviewList.reviewNo}"><spring:message code="action.remove" /></button>
+							<button type="button" class="reviewmodify" data-rno="${reviewList.reviewNo}"><spring:message code="action.modify" /></button>
 						</sec:authorize>
 						
 						<sec:authorize access="hasRole('ROLE_MEMBER')">
 							<c:if test="${pinfo.username eq reviewList.reviewWriter}">
 								<button type="button" class="reviewremove" data-rno="${reviewList.reviewNo}"><spring:message code="action.remove" /></button>
+								<button type="button" class="reviewmodify" data-rno="${reviewList.reviewNo}"><spring:message code="action.modify" /></button>
 							</c:if>
 						</sec:authorize>
 						
@@ -73,7 +75,12 @@
 							$(".reviewremove").click(function(){
 							   self.location = "/item/reviewremove${pgrq.toItemUriString()}&itemId=${item.itemId}"
 							    + "&reviewNo=" + $(this).attr("data-rno");        
-							  });
+							});
+							
+							$(".reviewmodify").click(function(){
+								self.location = "/item/reviewmodify${pgrq.toItemUriString()}&itemId=${item.itemId}"
+								+ "&reviewNo=" + $(this).attr("data-rno");        
+							});
 						</script>
 					</div>
 					<br>

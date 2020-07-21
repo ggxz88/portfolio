@@ -38,6 +38,10 @@ private final ReviewMapper mapper;
 		mapper.delete(reviewNo);
 	}
 	
-	
+	@Override
+	public Review read(int reviewNo) throws Exception {
+		return mapper.read(reviewNo);
+	}
+
 	
 }

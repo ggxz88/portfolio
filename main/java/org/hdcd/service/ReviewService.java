@@ -14,4 +14,6 @@ public interface ReviewService {
 	
 	public void remove(int reviewNo) throws Exception;
 	
+	public Review read(int reviewNo) throws Exception;
+	
 }

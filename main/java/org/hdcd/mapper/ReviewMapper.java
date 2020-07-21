@@ -14,4 +14,6 @@ public interface ReviewMapper {
 	
 	public List<Review> list(Integer boardNo) throws Exception;
 	
+	public Review read(Integer reviewNo) throws Exception;
+
 }

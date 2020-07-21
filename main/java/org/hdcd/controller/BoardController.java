@@ -178,10 +178,11 @@ public class BoardController {
 	
 	@RequestMapping(value = "/replyremove", method = {RequestMethod.GET, RequestMethod.POST})
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
-	public String replyremove(Reply reply, @RequestParam int replyNo, int boardNo, PageRequest pageRequest, Authentication authentication, RedirectAttributes rttr) throws Exception {
+	public String replyremove(@RequestParam int replyNo, int boardNo, PageRequest pageRequest, Authentication authentication, RedirectAttributes rttr) throws Exception {
 		logger.info("reply delete");
+		logger.info("삭제할 댓글 번호 :" + replyNo);
 		
-		replyService.remove(replyNo); //v
+		replyService.remove(replyNo);
 		
 		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
 		rttr.addAttribute("page", pageRequest.getPage());
@@ -197,20 +198,28 @@ public class BoardController {
 		return "redirect:/board/read";
 	}
 	
-	/*
 	@RequestMapping(value = "/replymodify", method = RequestMethod.GET)
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
-	public void modifyForm(int boardNo, Model model) throws Exception {
+	public void replymodifyForm(int replyNo, @ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
+		logger.info("reply modifyform");
 		//조회한 게시글 상세정보를 뷰에 전달
-		Board board = service.read(boardNo);
-								
-		model.addAttribute(board);
+		
+		Reply reply = replyService.read(replyNo);
+		
+		logger.info("replyNo : " + replyNo);
+		
+		model.addAttribute(reply);
 	}
 	
 	@RequestMapping(value = "/replymodify", method = RequestMethod.POST)
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
-	public String modify(Board board, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
-		service.modify(board);
+	public String replymodify(Reply reply, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
+		logger.info("reply modify");
+		
+		logger.info("수정할 댓글 번호 :" + reply.getReplyNo());
+		logger.info("수정할 내용 :" + reply.getReplyContent());
+
+		replyService.modify(reply);
 		
 		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
 		rttr.addAttribute("page", pageRequest.getPage());
@@ -219,12 +228,11 @@ public class BoardController {
 		//검색 유형과 검색어를 뷰에 전달
 		rttr.addAttribute("searchType", pageRequest.getSearchType());
 		rttr.addAttribute("keyword", pageRequest.getKeyword());
+		rttr.addAttribute("boardNo", reply.getBoardNo());
 				
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/board/list";
+		return "redirect:/board/read";
 	}
-	*/
-	
 	
 }

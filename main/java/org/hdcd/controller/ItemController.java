@@ -371,7 +371,7 @@ public class ItemController {
 	public String replyremove(Review review, @RequestParam int reviewNo, int itemId, PageRequest pageRequest, Authentication authentication, RedirectAttributes rttr) throws Exception {
 		logger.info("review delete");
 		
-		reviewService.remove(reviewNo); //v
+		reviewService.remove(reviewNo);
 		
 		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
 		rttr.addAttribute("page", pageRequest.getPage());
@@ -386,5 +386,40 @@ public class ItemController {
 		return "redirect:/item/read";
 	}
 	
+	@RequestMapping(value = "/reviewmodify", method = RequestMethod.GET)
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
+	public void replymodifyForm(int reviewNo, @ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
+		logger.info("review modifyform");
+		//조회한 게시글 상세정보를 뷰에 전달
+		
+		Review review = reviewService.read(reviewNo);
+		
+		logger.info("reviewNo : " + reviewNo);
+		
+		model.addAttribute(review);
+	}
+	
+	@RequestMapping(value = "/reviewmodify", method = RequestMethod.POST)
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
+	public String replymodify(Review review, PageRequest pageRequest, RedirectAttributes rttr) throws Exception {
+		logger.info("review modify");
+		
+		logger.info("수정할 댓글 번호 :" + review.getReviewNo());
+		logger.info("수정할 내용 :" + review.getReviewContent());
+
+		reviewService.modify(review);
+		
+		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
+		rttr.addAttribute("page", pageRequest.getPage());
+		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
+		
+		//검색 유형과 검색어를 뷰에 전달
+		rttr.addAttribute("keyword", pageRequest.getKeyword());
+		rttr.addAttribute("itemId", review.getItemId());
+				
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/item/read";
+	}
 	
 }
