@@ -54,7 +54,7 @@
 		<c:choose>
 			<c:when test="${empty replyList}">
 				<div>
-					<spring:message code="common.listEmpty" />
+					<spring:message code="reply.empty" />
 				</div>
 			</c:when>
 			<c:otherwise>

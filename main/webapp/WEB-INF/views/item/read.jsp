@@ -46,7 +46,7 @@
 		<c:choose>
 			<c:when test="${empty reviewList}">
 				<div>
-					<spring:message code="common.listEmpty" />
+					<spring:message code="review.empty" />
 				</div>
 			</c:when>
 			<c:otherwise>

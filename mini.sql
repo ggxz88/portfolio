@@ -131,10 +131,32 @@ ALTER TABLE cart ADD CONSTRAINT fk_cart_userId FOREIGN KEY (userId) REFERENCES m
 CREATE TABLE reply (
 	replyNo INT(5) NOT NULL AUTO_INCREMENT,
     boardNo INT NOT NULL,
-	content VARCHAR(150) NOT NULL,
-	writer VARCHAR(50) NOT NULL,
+	replyContent VARCHAR(150) NOT NULL,
+	replyWriter VARCHAR(50) NOT NULL,
 	regDate TIMESTAMP DEFAULT now(),
 	PRIMARY KEY (replyNo, boardNo)
 );
 
 ALTER TABLE reply ADD CONSTRAINT fk_reply_boardNo FOREIGN KEY (boardNo) REFERENCES board(boardNo) ON DELETE CASCADE;
+
+CREATE TABLE review (
+	reviewNo INT(5) NOT NULL AUTO_INCREMENT,
+    itemId INT(5) NOT NULL,
+    reviewContent VARCHAR(150) NOT NULL,
+    reviewWriter VARCHAR(50) NOT NULL,
+    regDate TIMESTAMP DEFAULT now(),
+    PRIMARY KEY (reviewNo, itemId)
+);
+
+ALTER TABLE review ADD CONSTRAINT fk_review_itemId FOREIGN KEY (itemId) REFERENCES item(itemId) ON DELETE CASCADE;
+
+CREATE TABLE banner(
+	bannerNo INT(5) AUTO_INCREMENT,
+    itemId INT(5) NOT NULL,
+    bannerName VARCHAR(30) NOT NULL,
+    bannerPictureUrl varchar(200),
+	PRIMARY KEY (bannerNo)
+);
+
+ALTER TABLE banner ADD CONSTRAINT fk_banner_itemId FOREIGN KEY (itemId) REFERENCES item(itemId) ON DELETE CASCADE;
+

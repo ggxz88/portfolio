@@ -15,7 +15,6 @@ import org.hdcd.common.domain.Pagination;
 import org.hdcd.common.security.domain.CustomUser;
 import org.hdcd.domain.Item;
 import org.hdcd.domain.Member;
-import org.hdcd.domain.Reply;
 import org.hdcd.domain.Review;
 import org.hdcd.service.CartService;
 import org.hdcd.service.ItemService;
@@ -88,7 +87,6 @@ public class ItemController {
 
 		item.setPictureUrl(createdPictureFilename);
 		item.setPreviewUrl(createdPreviewFilename);
-		
 		
 		service.register(item);
 		

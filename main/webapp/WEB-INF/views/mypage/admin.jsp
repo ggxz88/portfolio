@@ -35,6 +35,9 @@
 			<div class="mybtn">
 				<a href="/item/list"><br><br><spring:message code="menu.item.admin" /></a>
 			</div>
+			<div class="mybtn">
+				<a href="/banner/list"><br><br><spring:message code="menu.banner.admin" /></a>
+			</div>
 		</div>
 	</sec:authorize>
 	            	        

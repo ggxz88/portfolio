@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.hdcd.mapper.BannerMapper">
+
+	<insert id="create">
+		INSERT INTO banner
+			(
+			itemId,
+			bannerName,
+			bannerPictureUrl
+			)
+		VALUES
+			(
+			#{itemId},
+			#{bannerName},
+			#{bannerPictureUrl}
+			)
+	</insert>
+	
+	<select id="list" resultType="org.hdcd.domain.Banner">
+		<![CDATA[
+			SELECT a.bannerNo,
+				a.itemId,
+				b.itemName,
+				a.bannerName,
+				a.bannerPictureUrl
+			  FROM banner a INNER JOIN item b ON a.itemId = b.itemId
+			 WHERE bannerNo > 0
+		]]>
+	</select>
+	
+	<select id="read" resultType="org.hdcd.domain.Banner">
+		SELECT a.bannerNo,
+				a.itemId,
+				b.itemName,
+				a.bannerName,
+				a.bannerPictureUrl
+			  FROM banner a INNER JOIN item b ON a.itemId = b.itemId
+		 WHERE bannerNo = #{bannerNo}
+	</select>
+	
+	<update id="update">
+		UPDATE banner
+		   SET itemId = #{itemId},
+		   	   bannerName = #{bannerName},
+		   	   bannerPictureUrl = #{bannerPictureUrl}
+		 WHERE bannerNo = #{bannerNo}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM banner
+		 WHERE bannerNo = #{bannerNo}
+	</delete>
+	
+	<select id="getBannerPicture" resultType="String">
+		SELECT bannerPictureUrl
+		  FROM banner
+		 WHERE bannerNo = #{bannerNo}
+	</select>
+</mapper>

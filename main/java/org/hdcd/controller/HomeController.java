@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.hdcd.domain.Banner;
 import org.hdcd.domain.UserItem;
+import org.hdcd.service.BannerService;
 import org.hdcd.service.UserItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,10 +26,12 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	private final UserItemService userItemservice;
+	private final BannerService bannerService;
 	
 	@Autowired
-	public HomeController(UserItemService userItemservice) {
+	public HomeController(UserItemService userItemservice, BannerService bannerService) {
 		this.userItemservice = userItemservice;
+		this.bannerService = bannerService;
 	}
 	
 	/**
@@ -49,6 +53,10 @@ public class HomeController {
 		List<UserItem> rank = userItemservice.rank(itemId);
 		
 		model.addAttribute("list", rank);
+		
+		List<Banner> banner = bannerService.list();
+		
+		model.addAttribute("banner", banner);
 		
 		return "home";
 	}

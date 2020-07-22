@@ -3,13 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-
-<a href="/item/read?itemId=4"><img class="mySlides" width="70%" height="300px" src="<spring:url value='/resources/images/image/blue.png'/>">
-</a>
-<a href="/item/read?itemId=5"><img class="mySlides" width="70%" height="300px" src="<spring:url value='/resources/images/image/purple.png'/>">
-</a>
-<a href="/item/read?itemId=6"><img class="mySlides" width="70%" height="300px" src="<spring:url value='/resources/images/image/blue2.png'/>">
-</a>
+<c:forEach items="${banner}" var="banner">
+	<a href="/item/read?itemId=${banner.itemId}"><img class="mySlides" width="70%" height="300px" src="/banner/display?bannerNo=${banner.bannerNo}" width="210" height="240" id="bannerPicture" name="bannerPicture"></a>
+</c:forEach>	
 
 <script>
 	var slideIndex = 0;
