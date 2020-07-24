@@ -127,4 +127,16 @@
 		  FROM member
 		 WHERE userId = #{userId}
 	</select>
+	
+	<select id="findEmail" resultType="org.hdcd.domain.Member">
+		SELECT userId
+		  FROM member
+		 WHERE email = #{email}
+	</select>
+	
+	<update id="updatePw">
+		UPDATE member
+		   SET userPw = #{userPw}
+		 WHERE userId = #{userId}
+	</update>
 </mapper>

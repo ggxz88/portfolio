@@ -86,6 +86,16 @@ public class MemberServiceImpl implements MemberService {
 	public Member idChk(String userId) throws Exception {
 		return mapper.idChk(userId);
 	}
+	
+	@Override
+	public Member findEmail(String email) throws Exception {
+		return mapper.findEmail(email);
+	}
+	
+	@Override
+	public void modifyPw(Member member) throws Exception {
+		mapper.updatePw(member);
+	}
 
 	
 }

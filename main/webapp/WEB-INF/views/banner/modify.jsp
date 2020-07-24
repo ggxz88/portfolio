@@ -26,7 +26,6 @@
 	<div>
 		<button type="submit" id="modifybtn" name="modify">수정</button>
 		<a href="/item/list"><input type="button" value="<spring:message code="action.list" />"></a>
-			
 	</div>
 	
 </form>

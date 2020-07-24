@@ -32,6 +32,11 @@
 	<div>
 		<button><spring:message code="action.login" /></button>
 	</div>
+	<br>
+	<div>
+		<a href="/user/findId"><input type="button" value="<spring:message code="user.findid"/>"></a>
+		<a href="/user/findPass"><input type="button" value="<spring:message code="user.findpw"/>"></a>
+	</div>
 		
 	<sec:csrfInput />
 </form>

@@ -26,4 +26,8 @@ public interface MemberMapper {
 	public int countAll() throws Exception;
 	
 	public Member idChk(String userId) throws Exception;
+	
+	public Member findEmail(String email) throws Exception;
+	
+	public void updatePw(Member member) throws Exception;
 }

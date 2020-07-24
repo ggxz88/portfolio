@@ -92,7 +92,7 @@ public class BannerController {
 		
 		model.addAttribute(banner);
 	
-		return "/banner/read";
+		return "banner/read";
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
@@ -104,7 +104,7 @@ public class BannerController {
 		
 		model.addAttribute(banner);
 		
-		return "/banner/modify";
+		return "banner/modify";
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
@@ -137,7 +137,7 @@ public class BannerController {
 		
 		model.addAttribute(banner);
 		
-		return "/banner/remove";
+		return "banner/remove";
 	}
 	
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)

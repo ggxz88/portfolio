@@ -50,7 +50,15 @@
 			<div class="mybtn">
 				<a href="/coin/list"><br><br><spring:message code="menu.coin.list" /></a>
 			</div>
+			<div class="mybtn">
+				<a href="/user/userread?userId=${member.userId}"><br><br><spring:message code="menu.user.member"/></a>
+			</div>
+			<div class="mybtn">
+				<a href="/user/checkPw"><br><br><spring:message code="menu.user.modifypw"/></a>
+			</div>
 		</div>
+		
+		
 	</sec:authorize>	        	        
 </sec:authorize>
 	

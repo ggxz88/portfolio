@@ -169,6 +169,11 @@ a:hover {
 	top: 340px;
 }
 
+#newcheck {
+	position: absolute;
+	top: 274px;
+}
+
 /* list */
 #list {
 	border-collapse : collapse;
