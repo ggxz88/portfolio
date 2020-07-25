@@ -47,7 +47,7 @@
 	총 금액 : ${priceall}원
 	<br>
 </div>
-
+<br>
 <div id="removeall">
 	<a href="/cart/removeall?userId=${cart.userId}"><spring:message code="cart.removeall" /></a>
 </div>

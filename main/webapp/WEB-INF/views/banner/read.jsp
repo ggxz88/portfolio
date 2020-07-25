@@ -22,7 +22,7 @@
 	
 	<div>
 		<a href="/banner/modify?bannerNo=${banner.bannerNo}"><input type="button" value="<spring:message code="action.modify" />"></a>
-		<a href="/banner/remove?bannerNo=${banner.bannerNo}'"><input type="button" value="<spring:message code="action.remove" />"></a>
+		<a href="/banner/remove?bannerNo=${banner.bannerNo}"><input type="button" value="<spring:message code="action.remove" />"></a>
 		<a href="/banner/list"><input type="button" value="<spring:message code="action.list" />"></a>
 	</div>
 	

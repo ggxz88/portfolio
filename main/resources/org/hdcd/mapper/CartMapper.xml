@@ -62,7 +62,7 @@
 	
 	<select id="priceAll" resultType="int">
 		<![CDATA[
-			SELECT SUM(a.price*b.amount)
+			SELECT COALESCE(SUM(a.price*b.amount), 0)
 			  FROM item a INNER JOIN cart b ON a.itemId = b.itemId
 			 WHERE b.userId = #{userId}
 		]]>

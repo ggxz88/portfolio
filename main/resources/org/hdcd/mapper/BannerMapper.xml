@@ -28,6 +28,7 @@
 				a.bannerPictureUrl
 			  FROM banner a INNER JOIN item b ON a.itemId = b.itemId
 			 WHERE bannerNo > 0
+			ORDER BY bannerNo DESC
 		]]>
 	</select>
 	

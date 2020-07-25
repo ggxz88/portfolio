@@ -1,5 +1,8 @@
 package org.hdcd.controller;
 
+
+import java.util.List;
+
 import org.hdcd.common.security.domain.CustomUser;
 import org.hdcd.domain.Cart;
 import org.hdcd.domain.Member;
@@ -26,16 +29,19 @@ public class CartController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
 	public void list(Model model, Authentication authentication) throws Exception {
 		CustomUser customUser = (CustomUser) authentication.getPrincipal();
 		Member member = customUser.getMember();
 		
 		String userId = member.getUserId();
 		
-		model.addAttribute("list", service.list(userId));
+		List<Cart> list = service.list(userId);
 		
-		model.addAttribute("priceall", service.priceAll(userId));
+		model.addAttribute("list", list);
+		
+		int All = service.priceAll(userId);
+		
+		model.addAttribute("priceall", All);
 	}
 	
 	@RequestMapping(value = "/remove", method = {RequestMethod.POST, RequestMethod.GET})

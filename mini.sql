@@ -13,8 +13,8 @@ CREATE TABLE member (
 );
 
 CREATE TABLE  member_auth (
-	userId VARCHAR(50) NOT NULL, /*아이디*/
-	auth VARCHAR(50) NOT NULL /*권한*/
+	userId VARCHAR(50) NOT NULL, 
+	auth VARCHAR(50) NOT NULL 
 );
 
 ALTER TABLE member_auth ADD CONSTRAINT fk_member_auth_userId FOREIGN KEY (userId) REFERENCES member(userId) ON DELETE CASCADE;
@@ -79,7 +79,7 @@ CREATE TABLE charge_coin_history (
 /*지급 내역 테이블*/
 CREATE TABLE pay_coin_history (
 	historyNo INT AUTO_INCREMENT,
-	userId VARCHAR(50) NOT NULL, /*아이디*/
+	userId VARCHAR(50) NOT NULL,
     itemId INT(5) NOT NULL,
     amount INT(5) NOT NULL,
     regDate TIMESTAMP DEFAULT now(),
@@ -117,6 +117,7 @@ CREATE TABLE performance_log (
 	PRIMARY KEY (log_no)
 );
 
+/*장바구니 테이블*/
 CREATE TABLE cart (
 	cartNo INT(5) NOT NULL AUTO_INCREMENT,
 	userId VARCHAR(50) NOT NULL, 
@@ -128,6 +129,7 @@ CREATE TABLE cart (
 ALTER TABLE cart ADD CONSTRAINT fk_cart_itemId FOREIGN KEY (itemId) REFERENCES item(itemId) ON DELETE CASCADE;
 ALTER TABLE cart ADD CONSTRAINT fk_cart_userId FOREIGN KEY (userId) REFERENCES member(userId) ON DELETE CASCADE;
 
+/*댓글 테이블*/
 CREATE TABLE reply (
 	replyNo INT(5) NOT NULL AUTO_INCREMENT,
     boardNo INT NOT NULL,
@@ -139,6 +141,7 @@ CREATE TABLE reply (
 
 ALTER TABLE reply ADD CONSTRAINT fk_reply_boardNo FOREIGN KEY (boardNo) REFERENCES board(boardNo) ON DELETE CASCADE;
 
+/*후기 테이블*/
 CREATE TABLE review (
 	reviewNo INT(5) NOT NULL AUTO_INCREMENT,
     itemId INT(5) NOT NULL,
@@ -150,6 +153,7 @@ CREATE TABLE review (
 
 ALTER TABLE review ADD CONSTRAINT fk_review_itemId FOREIGN KEY (itemId) REFERENCES item(itemId) ON DELETE CASCADE;
 
+/*상품 홍보 배너 테이블*/
 CREATE TABLE banner(
 	bannerNo INT(5) AUTO_INCREMENT,
     itemId INT(5) NOT NULL,

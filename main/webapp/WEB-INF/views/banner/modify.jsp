@@ -9,6 +9,11 @@
 	<input type="hidden" name="bannerNo" value="${banner.bannerNo}" />
 	
 	<div class="input_area">
+		<label for="itemId"><spring:message code="banner.itemId" /></label>
+		<input type="text" id="itemId" name="itemId" value="${banner.itemId}" required="required" />
+	</div>
+	
+	<div class="input_area">
 		<label for="bannerName"><spring:message code="banner.bannerName" /></label>
 		<input type="text" id="bannerName" name="bannerName" value="${banner.bannerName}" required="required"/>
 	</div>

@@ -114,15 +114,14 @@ public class BannerController {
 		
 		MultipartFile bannerPicturefile = banner.getBannerPicture();
 
-		logger.info("1");
 		if (bannerPicturefile != null && bannerPicturefile.getSize() > 0) {
 			String createdFilename = uploadFile(bannerPicturefile.getOriginalFilename(), bannerPicturefile.getBytes());
-			logger.info("2");
+
 			banner.setBannerPictureUrl(createdFilename);
 		}
-		logger.info("3");
+
 		service.modify(banner);
-		
+
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
 		return "redirect:/banner/list";
