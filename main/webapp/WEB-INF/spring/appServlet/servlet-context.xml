@@ -25,9 +25,10 @@
 		<beans:property name="order" value="2"></beans:property>
 	</beans:bean>
 	
+	<!-- org.hdcd.controller 패키지를 컴포넌트 스캔 대상으로 한다. -->
 	<context:component-scan base-package="org.hdcd.controller" />
 	
-	<!-- org.hdcd.conmmon.security 패키지를 컴포넌트 스캔 대상으로 한다. -->
+	<!-- org.hdcd.common.security 패키지를 컴포넌트 스캔 대상으로 한다. -->
 	<context:component-scan base-package="org.hdcd.common.security" />
 	
 	<!-- org.hdcd.common.controller 패키지를 컴포넌트 스캔 대상으로 함 -->

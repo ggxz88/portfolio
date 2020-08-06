@@ -6,8 +6,8 @@
 
 	<!-- 검색 유형과 검색어의 조합으로 다양한 쿼리를 동적으로 생성 -->
 	<sql id="search">
-		<if test="searchType != null">
-			AND title LIKE CONCAT('%', #{keyword}, '%')
+		<if test="keyword != null">
+			AND itemName LIKE CONCAT('%', #{keyword}, '%')
 		</if>
 	</sql>
 
@@ -43,7 +43,7 @@
 	
 	<update id="update">
 		UPDATE item
-		   SET itemName = #{itemName}
+		   SET itemName = #{itemName},
 		  	   price = #{price},
 		  	   description = #{description},
 		  	   pictureUrl = #{pictureUrl},

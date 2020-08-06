@@ -130,12 +130,11 @@ public class ItemController {
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public String modifyForm(Integer itemId, @ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
+	public void modifyForm(Integer itemId, @ModelAttribute("pgrq") PageRequest pageRequest, Model model) throws Exception {
 		Item item = service.read(itemId);
 		
 		model.addAttribute(item);
 		
-		return "item/modify";
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
@@ -148,7 +147,7 @@ public class ItemController {
 
 			item.setPictureUrl(createdFilename);
 		}
-		
+
 		MultipartFile previewFile = item.getPreview();
 
 		if (previewFile != null && previewFile.getSize() > 0) {
@@ -156,18 +155,18 @@ public class ItemController {
 
 			item.setPreviewUrl(createdFilename);
 		}
-		
+
 		service.modify(item);
-		
+
 		//RedirectAttributes 객체에 일회성 데이터를 지정하여 전달
 		rttr.addAttribute("page", pageRequest.getPage());
 		rttr.addAttribute("sizePerPage", pageRequest.getSizePerPage());
 				
 		//검색어를 뷰에 전달
 		rttr.addAttribute("keyword", pageRequest.getKeyword());
-		
+
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		
+
 		return "redirect:/item/list";
 	}
 	

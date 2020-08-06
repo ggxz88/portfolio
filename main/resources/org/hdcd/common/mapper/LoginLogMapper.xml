@@ -8,13 +8,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="create">
 		INSERT INTO login_log
 			 (
-			   user_no,
 			   user_id,
 			   remote_addr
 			 )
 		VALUES
 			 (
-			   #{userNo},
 			   #{userId},
 			   #{remoteAddr}
 			 )
@@ -22,7 +20,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="list" resultType="org.hdcd.common.domain.LoginLog">
 		SELECT log_no,
-			   user_no,
 			   user_id,
 			   remote_addr,
 			   reg_date

@@ -8,6 +8,7 @@
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	<input type="hidden" name="itemId" value="${item.itemId}" />
 	<input type="hidden" name="pictureUrl" value="${item.pictureUrl}" />
+	<input type="hidden" name="pictureUrl" value="${item.previewUrl}" />
 	<input type="hidden" name="page" value="${pgrq.page}" />
 	<input type="hidden" name="sizePerPage" value="${pgrq.sizePerPage}" />
 	<input type="hidden" name="keyword" value="${pgrq.keyword}" />
@@ -23,8 +24,8 @@
 	</div>
 	
 	<div class="preview_area">
-		<label for="preview"><spring:message code="item.preview" /></label>
-		<img src="display?itemId=${item.itemId}" width="150" height="150" id="preview" name="preview">
+		<label for="previewFile"><spring:message code="item.preview" /></label>
+		<img src="display?itemId=${item.itemId}" width="150" height="150" id="previewFile" name="previewFile">
 	</div>
 	
 	<div class="picture_area">
@@ -33,8 +34,8 @@
 	</div>
 	
 	<div class="previewfile_area">
-		<label for="previewFile"><spring:message code="item.itemPreviewFile" /></label>
-		<input type="file" id="previewFile" name="previewFile" />
+		<label for="preview"><spring:message code="item.itemPreviewFile" /></label>
+		<input type="file" id="preview" name="preview" />
 	</div>
 	
 	<div class="description_area">
@@ -44,7 +45,7 @@
 	
 	<div>
 		<button type="submit" id="modifybtn" name="modify">수정</button>
-		<a href="/item/list${pgrq.toUriString()}"><input type="button" value="<spring:message code="action.list" />"></a>
+		<a href="/item/list${pgrq.toItemUriString()}"><input type="button" value="<spring:message code="action.list" />"></a>
 			
 	</div>
 	

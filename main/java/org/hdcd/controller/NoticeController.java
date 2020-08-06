@@ -65,10 +65,7 @@ public class NoticeController {
 		searchTypeCodeValueList.add(new CodeLabelValue("n", "---"));
 		searchTypeCodeValueList.add(new CodeLabelValue("t", "Title"));
 		searchTypeCodeValueList.add(new CodeLabelValue("c", "Content"));
-		searchTypeCodeValueList.add(new CodeLabelValue("w", "Writer"));
 		searchTypeCodeValueList.add(new CodeLabelValue("tc", "Title OR Content"));
-		searchTypeCodeValueList.add(new CodeLabelValue("cw", "Content OR Writer"));
-		searchTypeCodeValueList.add(new CodeLabelValue("tcw", "Title OR Content OR Writer"));
 
 		model.addAttribute("searchTypeCodeValueList", searchTypeCodeValueList);
 

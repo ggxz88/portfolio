@@ -174,6 +174,11 @@ a:hover {
 	top: 274px;
 }
 
+#admincheck {
+	position: absolute;
+	top: 335px;
+}
+
 /* list */
 #list {
 	border-collapse : collapse;

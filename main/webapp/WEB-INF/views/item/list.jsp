@@ -52,7 +52,7 @@
 			<c:forEach items="${list}" var="item">
 				<tr>
 					<td align="center">${item.itemId}</td>
-					<td align="center">${item.itemName}</td>
+					<td align="center"><a href='/item/read${pgrq.toUriString(pgrq.page)}&itemId=${item.itemId}'>${item.itemName}</a></td>
 					<td align="center">${item.price} 원</td>
 					
 					<sec:authorize access="hasRole('ROLE_ADMIN')">

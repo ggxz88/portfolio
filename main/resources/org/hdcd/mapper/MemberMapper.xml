@@ -57,6 +57,19 @@
 			#{phone}
 			)
 	</insert>
+	
+	<insert id="createAuth">
+		INSERT INTO member_auth
+			(
+			userId,
+			auth
+			)
+		VALUES
+			(
+			#{userId},
+			#{auth}
+			)
+	</insert>
 
 	<select id="read" resultMap="memberMap">
 		SELECT mem.userId,
@@ -98,20 +111,7 @@
 		  FROM member
 		ORDER BY regDate DESC
 	</select>
-	
-	<insert id="createAuth">
-		INSERT INTO member_auth
-			(
-			userId,
-			auth
-			)
-		VALUES
-			(
-			#{userId},
-			#{auth}
-			)
-	</insert>
-	
+
 	<delete id="deleteAuth">
 		DELETE FROM member_auth
 		WHERE userId = #{userId}

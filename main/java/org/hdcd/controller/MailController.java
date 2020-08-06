@@ -46,7 +46,7 @@ public class MailController {
 			String subject = "아이디 찾기 안내 메일입니다.";
 			StringBuilder sb = new StringBuilder();
 			sb.append("귀하의 아이디는 " + member.getUserId() + " 입니다.");
-			mailService.send(subject, sb.toString(), "ggxz8810@gmail.com", email, null);
+			mailService.send(subject, sb.toString(), "아이디", email, null);
 			rttr.addFlashAttribute("msg", "귀하의 이메일 주소로 해당 이메일로 가입된 아이디를 발송하였습니다.");
 		} 
 		else {
@@ -71,7 +71,7 @@ public class MailController {
 				rttr.addFlashAttribute("msg", "아이디가 일치하지 않습니다.");
 				return "redirect:/user/findPass";
 			}
-			int ran = new Random().nextInt(100000) + 10000; //10000 ~ 99999
+			int ran = new Random().nextInt(100000) + 10000;
 			String temppass = String.valueOf(ran);
 			member.setUserPw(passwordEncoder.encode(temppass));
 			
@@ -80,7 +80,7 @@ public class MailController {
 			String subject = "임시 비밀번호 발급 안내입니다.";
 			StringBuilder sb = new StringBuilder();
 			sb.append("귀하의 임시 비밀번호는" + temppass + "입니다.");
-			mailService.send(subject, sb.toString(), "ggxz8810@gmail.com", email, null);
+			mailService.send(subject, sb.toString(), "아이디", email, null);
 			rttr.addFlashAttribute("msg", "귀하의 이메일 주소로 새로운 비밀번호를 발송하였습니다.");
 		} else {
 			rttr.addFlashAttribute("msg", "귀하의 이메일로 가입된 아이디가 없습니다.");

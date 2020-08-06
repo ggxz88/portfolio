@@ -40,7 +40,7 @@
 	</c:choose>
 </table>
 
-<div id="newmake" align="right">
+<div id="newmake" align="center">
 	<a href="register"><spring:message code="action.new" /></a>
 </div>
 

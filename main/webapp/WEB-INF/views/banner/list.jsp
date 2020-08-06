@@ -7,7 +7,7 @@
 
 <table id="list" border="1">
 	<tr>
-		<th align="center" width="80"><spring:message code="banner.bannerNo" /></th>
+		<th align="center" width="180"><spring:message code="banner.bannerNo" /></th>
 		<th align="center" width="320"><spring:message code="banner.bannerName" /></th>
 		<th align="center" width="180"><spring:message code="banner.itemId" /></th>
 		<th align="center" width="180"><spring:message code="banner.itemName" /></th>

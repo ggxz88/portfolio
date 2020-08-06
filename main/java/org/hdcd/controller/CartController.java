@@ -69,15 +69,4 @@ public class CartController {
 		return "redirect:/cart/list";
 	}
 	
-	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	@PreAuthorize("hasRole('ROLE_MEMBER')")
-	public String modify(Cart cart, RedirectAttributes rttr) throws Exception {
-		service.modify(cart);
-				
-		rttr.addFlashAttribute("msg", "SUCCESS");
-		
-		return "redirect:/cart/list";
-	}
-	
-	
 }

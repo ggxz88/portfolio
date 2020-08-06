@@ -12,21 +12,9 @@
 			<if test="searchType == 'c'.toString()">
 				AND content LIKE CONCAT('%', #{keyword}, '%')
 			</if>
-			<if test="searchType == 'w'.toString()">
-				AND writer LIKE CONCAT('%', #{keyword}, '%')
-			</if>
 			<if test="searchType == 'tc'.toString()">
 				AND (	title LIKE CONCAT('%', #{keyword}, '%')
 						OR content LIKE CONCAT('%', #{keyword}, '%'))
-			</if>
-			<if test="searchType == 'cw'.toString()">
-				AND (	content LIKE CONCAT('%', #{keyword}, '%')
-						OR writer LIKE CONCAT('%', #{keyword}, '%'))
-			</if>
-			<if test="searchType == 'tcw'.toString()">
-				AND (	title LIKE CONCAT('%', #{keyword}, '%')
-						OR content LIKE CONCAT('%', #{keyword}, '%')
-						OR writer LIKE CONCAT('%', #{keyword}, '%'))
 			</if>
 		</if>
 	</sql>

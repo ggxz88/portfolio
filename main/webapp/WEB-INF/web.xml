@@ -28,7 +28,7 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
-		<!-- 404 에러응 처리할 수 있도록 throwExceptionNoHandlerFound를 true로 -->
+		<!-- 404 에러를 처리할 수 있도록 throwExceptionNoHandlerFound를 true로 -->
 		<init-param>
 			<param-name>throwExceptionNoHandlerFound</param-name>
 			<param-value>true</param-value>

@@ -7,18 +7,9 @@ public class LoginLog implements Serializable {
 
 	private static final long serialVersionUID = -7305478161845863906L;
 	
-	private int userNo;
 	private String userId;
 	private String remoteAddr;
 	private Date regDate;
-
-	public int getUserNo() {
-		return userNo;
-	}
-
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
 	
 	public String getUserId() {
 		return userId;

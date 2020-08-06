@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
@@ -43,7 +44,7 @@
 </table>
 
 <sec:authorize access="hasRole('ROLE_MEMBER')">
-	<div id="newmake" align="right">
+	<div id="newmake" align="center">
 		<a href="register"><spring:message code="action.new" /></a>
 	</div>
 </sec:authorize>
