@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.hdcd.mapper.CoinMapper">
+
+	<insert id="create">
+		INSERT INTO charge_coin_history
+			(
+			userId,
+			amount
+			)
+		VALUES
+			(
+			#{userId},
+			#{amount}
+			)
+	</insert>
+	
+	<update id="charge">
+		UPDATE member
+		   SET coin = (coin + #{amount}),
+		   	updDate = now()
+		 WHERE userId = #{userId}
+	</update>
+	
+	<select id="list" resultType="org.hdcd.domain.Coin">
+		<![CDATA[
+			SELECT historyNo,
+				userId,
+				amount,
+				regDate
+			  FROM charge_coin_history
+			 WHERE historyNo > 0
+			 AND userId = #{userId}
+			ORDER BY historyNo DESC
+		]]>
+	</select>
+	
+	<!-- 구매 내역 생성 -->
+	<insert id="createPayHistory">
+		INSERT INTO pay_coin_history
+			(
+			userId,
+			itemId,
+			amount
+			)
+		VALUES
+			(
+			#{userId},
+			#{itemId},
+			#{amount}
+			)
+	</insert>
+	
+	<!-- 구매 내역 반환 -->
+	<select id="listPayHistory" resultType="org.hdcd.domain.PayCoin">
+		<![CDATA[
+			SELECT a.historyNo,
+				a.userId,
+				a.itemId,
+				b.itemName,
+				a.amount,
+				a.regDate
+			  FROM pay_coin_history a INNER JOIN item b ON a.itemId = b.itemId
+			 WHERE a.historyNo > 0
+			 AND userId = #{userId}
+			ORDER BY a.historyNo DESC
+		]]>
+	</select>
+	
+	<!-- 상품 구매에 대한 코인 지급 처리 -->
+	<update id="pay">
+		UPDATE member 
+		   SET coin = (coin - #{amount}),
+		   	updDate = now()
+		 WHERE userId = #{userId}
+	</update>
+
+</mapper>

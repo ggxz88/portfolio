@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.hdcd.mapper.NoticeMapper">
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				AND title LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				AND content LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				AND (	title LIKE CONCAT('%', #{keyword}, '%')
+						OR content LIKE CONCAT('%', #{keyword}, '%'))
+			</if>
+		</if>
+	</sql>
+	
+	<insert id="create">
+		INSERT INTO notice
+			(
+			title,
+			content
+			)
+		VALUES 
+			(
+			#{title},
+			#{content}
+			)
+	</insert>
+	
+	<select id="read" resultType="org.hdcd.domain.Notice">
+		SELECT noticeNo,
+			title,
+			content,
+			regDate
+		  FROM notice
+		 WHERE noticeNo = #{noticeNo}
+	</select>
+	
+	<update id="update">
+		UPDATE notice
+		   SET title = #{title},
+		   	content = #{content}
+		 WHERE noticeNo = #{noticeNo}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM notice
+		 WHERE noticeNo = #{noticeNo}
+	</delete>
+	
+	<select id="list" resultType="org.hdcd.domain.Notice">
+		<![CDATA[
+			SELECT noticeNo,
+				title,
+				content,
+				regDate
+			  FROM notice
+			 WHERE noticeNo > 0
+		]]>	 
+		
+		<include refid="search"></include>
+		
+		<![CDATA[
+			 ORDER BY noticeNo DESC,
+			 	regDate DESC
+			  LIMIT #{pageStart}, #{sizePerPage}	
+		]]>
+	</select>
+	
+	<select id="count" resultType="int">
+		<![CDATA[
+			SELECT count(noticeNo)
+			  FROM notice
+			 WHERE noticeNo > 0
+		]]>	 
+		
+		<include refid="search"></include>
+	</select>
+	
+</mapper>

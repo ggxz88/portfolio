@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.hdcd.mapper.MemberMapper">
+
+	<resultMap type="org.hdcd.domain.Member" id="memberMap">
+		<id property="userId" column="userId" />
+		<result property="userId" column="userId" />
+		<result property="userPw" column="userPw" />
+		<result property="userName" column="userName" />
+		<result property="coin" column="coin" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="enabled" column="enabled" />
+		<result property="regDate" column="regDate" />
+		<result property="updDate" column="updDate" />
+		<collection property="authList" resultMap="authMap"></collection>		
+	</resultMap>
+	
+	<resultMap type="org.hdcd.domain.MemberAuth" id="authMap">
+		<result property="userId" column="userId" />
+		<result property="auth" column="auth" />
+	</resultMap>
+	
+	<select id="readByUserId" resultMap="memberMap">
+		SELECT mem.userId,
+			userPw,
+			userName,
+			coin,
+			email,
+			phone,
+			enabled,
+			regDate,
+			updDate,
+			auth
+		  FROM member mem LEFT OUTER JOIN member_auth auth 
+		  ON mem.userId = auth.userId
+		 WHERE mem.userId = #{userId}
+	</select>
+	
+	<insert id="create" useGeneratedKeys="true" keyProperty="userId">
+		INSERT INTO member
+			(
+			userId,
+			userPw,
+			userName,
+			email,
+			phone
+			)
+		VALUES
+			(
+			#{userId},
+			#{userPw},
+			#{userName},
+			#{email},
+			#{phone}
+			)
+	</insert>
+	
+	<insert id="createAuth">
+		INSERT INTO member_auth
+			(
+			userId,
+			auth
+			)
+		VALUES
+			(
+			#{userId},
+			#{auth}
+			)
+	</insert>
+
+	<select id="read" resultMap="memberMap">
+		SELECT mem.userId,
+			userPw,
+			userName,
+			coin,
+			email,
+			phone,
+			enabled,
+			regDate,
+			updDate,
+			auth
+		  FROM member mem LEFT OUTER JOIN member_auth auth 
+		  ON mem.userId = auth.userId
+		 WHERE mem.userId = #{userId}
+	</select>
+	
+	<update id="update">
+		UPDATE member
+		   SET userName = #{userName},
+		       email = #{email},
+		       phone = #{phone}
+		 WHERE userId = #{userId}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM member
+		WHERE userId = #{userId}
+	</delete>
+	
+	<select id="list" resultType="org.hdcd.domain.Member">
+		SELECT userId,
+			userPw,
+			userName,
+			coin,
+			email,
+			phone,
+			regDate
+		  FROM member
+		ORDER BY regDate DESC
+	</select>
+
+	<delete id="deleteAuth">
+		DELETE FROM member_auth
+		WHERE userId = #{userId}
+	</delete>
+	
+	<select id="countAll" resultType="int">
+		SELECT COUNT(*) 
+		  FROM member
+	</select>
+	
+	<select id="idChk" resultType="org.hdcd.domain.Member">
+		SELECT userId
+		  FROM member
+		 WHERE userId = #{userId}
+	</select>
+	
+	<select id="findEmail" resultType="org.hdcd.domain.Member">
+		SELECT userId
+		  FROM member
+		 WHERE email = #{email}
+	</select>
+	
+	<update id="updatePw">
+		UPDATE member
+		   SET userPw = #{userPw}
+		 WHERE userId = #{userId}
+	</update>
+</mapper>
