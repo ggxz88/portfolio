@@ -10,7 +10,7 @@ Spring MVC Web Project
 Spring Framework기반의 JAVA 웹 개인 프로젝트입니다. <br>
 이 프로젝트에 대한 자세한 설명은 별도의 문서로 작성하였습니다. <br>
 설명서를 참고 하시려면 아래의 링크를 눌러주세요.<br>
-[설명서.pdf](https://github.com/ggxz88/minishop/files/5057890/default.pdf)
+[설명서.pdf](https://github.com/ggxz88/minishop/files/5080780/default.pdf)
 
 배포 : http://3.129.190.114:8080/
 
@@ -67,6 +67,14 @@ Spring Framework기반의 JAVA 웹 개인 프로젝트입니다. <br>
     - 구매 상품 : 목록, 보기, 상품 다운로드 
     - 기타 : 로그인 성공 로그, 서비스 성능 로그(AOP), 접근 로그(Interceptor)
     
+# 산출물
+    - ERD
+    ![ERD](https://user-images.githubusercontent.com/48514383/90336900-cf016200-e019-11ea-8531-09dc0be59895.PNG)
+    - 테이블 정의서
+    ![테이블 정의](https://user-images.githubusercontent.com/48514383/90336841-6fa35200-e019-11ea-9cf5-45f95716cf31.PNG)
+    - 클래스 다이어그램
+    ![클래스](https://user-images.githubusercontent.com/48514383/90336707-7f6e6680-e018-11ea-9b02-bdbdd28ae6d4.png)
+
 # 후기
   - 프로젝트로부터 느낀 점 : 간단해 보이는 기능이라도 이를 구현하는 것은 매우 복잡했고, 기반 지식과 기술이 상당히 많이 필요하다는 것을 느꼈습니다. 이를 통해 충분한 학습이 필요하다는 것을 느꼈습니다.
 한편, 혼자 프로젝트를 수행하며 조언을 해줄 멘토가 없었기 때문에 개발에 더 어려움을 느꼈었던 것 같습니다. 그리고 개인이 개발하는 것에서 기능 구현에 한계를 느꼈기 때문에 여러 명이 개발을 하는 것이 다양하고 복잡한 기능을 실현할 수 있다고 느꼈습니다. 하지만 새로운 학습을 하는 측면에는 많은 성과를 얻었습니다.
