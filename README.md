@@ -13,7 +13,7 @@ Spring Framework기반의 JAVA 웹 개인 프로젝트입니다. <br>
 [설명서.pdf](https://github.com/ggxz88/minishop/files/5080780/default.pdf)
 
 배포 : http://3.129.190.114:8080/  <br>
-※ 관리자로 사용 시 먼저 http://3.129.190.114:8080/user/setup 에서 관리자 등록부터 해야합니다.
+※ 사용 시 먼저 http://3.129.190.114:8080/user/setup 에서 관리자 등록부터 해야합니다.
 
 # 제작 동기 및 개발 목표
   - 제작 동기
